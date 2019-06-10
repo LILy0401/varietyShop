@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import dva from 'dva';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import router from './routes'
+import models from './models/index';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const app = dva({});
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+models(app)
+
+app.router(router)
+app.start('#root')
