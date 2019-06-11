@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
 import { connect } from 'dva';
+
 // import {setRouters} from '../../routes/index';
 class home extends Component {
     render() {
@@ -59,7 +60,7 @@ class home extends Component {
                             </dt>
                             <dd>分类管理</dd>
                         </dl>
-                        <dl className={style.list_dl}>
+                        <dl className={style.list_dl} onClick={this.goputaway.bind(this)}>
                             <dt>
                                 <span className='iconfont icon-xiaolu'></span>
                             </dt>
@@ -83,15 +84,10 @@ class home extends Component {
             </div>
         );
     }
-    addCount=()=>{
-        this.props.dispatch({type:'m_home/addCount'})
+
+    goputaway(){
+        this.props.history.push('/putaway');
     }
 }
-let state=(state)=>{
-    
-    return{
-        count:state.m_home.count
-        
-    }
-}
-export default connect(state)(home);
+
+export default home;

@@ -1,24 +1,20 @@
-import React from 'react'
-import Home from '../view/home/home';
-import CommodityDetail from '../view/commodityDetail/commodityDetail';
 
+import Home from '../view/home/home';
+import Putaway from '../view/putaway/putaway';
 let routers = [
+    
     {
         name:'home',
-        path:'/',
+        path:'/home',
         component:Home,
         children:[
-            {
-                name:'aaa',
-                path:'/aaa',
-                component:()=><h3>wwww</h3>, 
-            }
+          
         ]
     },
     {
-        name:'commodityDetail',
-        path:'/commodityDetail',
-        component:CommodityDetail
-    },
+        name:'putaway',
+        path:'/putaway',
+        component:Putaway
+    }
 ]
 export default routers;
