@@ -123,6 +123,7 @@ body,html{
 .list_dl>dt>span{
     font-size: .4rem;
     color: red;
+    line-height: 1rem;
 }
 .list_dl:nth-child(1)>dt>span,.list_dl:nth-child(3)>dt>span{
     color: #F2922F;

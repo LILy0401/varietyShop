@@ -41,4 +41,26 @@
 .put_commodity{
     width: 100%;
     height: 2rem;
+    background: #FFFFFF;
+    padding-left: .1rem;
+}
+.put_p{
+    width: 100%;
+    height: 1rem;
+    background: #FFFFFF;
+    box-shadow: inset 0 -1px 0 0 #EBEBEB;
+    font-size: .28rem;
+    display: flex;
+    align-items: center;
+}
+.put_p>span{
+    flex: 2;
+    font-size: .28rem;
+    font-family: PingFangSC-Regular;
+    color: #333333;
+}
+.put_p>input{
+    flex: 6;
+    width: 1.69rem;
+    text-align: left;
 }
