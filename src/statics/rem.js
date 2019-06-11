@@ -7,11 +7,11 @@
             //当前设备视口宽度
         var clientWidth = docEl.clientWidth;
         if (!clientWidth) return;
-        docEl.style.fontSize = 100 * (clientWidth / image_width) + 'px';
+        docEl.style.fontSize =  100* (clientWidth / image_width) + 'px';
     };
 
     if (!doc.addEventListener) return;
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
 
-})(document, window, 640);
+})(document, window, 750);

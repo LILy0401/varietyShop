@@ -1,0 +1,141 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    width: 100%;
+    height: 2.4rem;
+    background: #F2922F;
+}
+.header_p{
+    width: 100%;
+    height:1rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: .25rem;
+}
+.header_p>span:nth-child(1){
+    flex: 2;
+    font-size: .36rem;
+    padding-left: .3rem;
+}
+.header_p>p:nth-child(2){
+    flex: 6;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .25rem;
+
+}
+.header_p>span:nth-child(3){
+    flex: 2;
+    text-align: right;
+    font-size: .36rem;
+    padding-right: .3rem;
+}
+
+.header_div{
+    width: 100%;
+    height: 1.4rem;
+    display: flex;
+    align-items: center;
+    font-size: .18rem;
+   
+}
+.header_div_p{
+    flex: 2.5;
+    text-align: center;
+}
+.header_div_p>span{
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    background: #fff;
+    border-radius: 50%;
+}
+.messge{
+    flex: 7.5;
+}
+
+.messge>span:nth-child(1){
+    font-size: .3rem;
+}
+.messge>span:nth-child(2){
+    font-size: .2rem;
+}
+.messge>span{
+    display: block;
+    width: 100%;
+    height: .6rem;
+    color: #fff;
+    line-height: .6rem;
+}
+.section{
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+}
+.section_tit{
+    width: 100%;
+    height: .88rem;  
+    background:#F8F8F8 ;
+    font-size: .32rem;
+    text-align: left;
+    line-height: .88rem;
+    color: #333;
+}
+.section_tit>span:nth-child(1){
+    padding: 1px;
+    margin-left: .3rem;
+    background: #5ADAD0;
+}
+.section_tit>span:nth-child(2){
+    padding-left: .2rem;
+}
+.content_list{
+    width: 100%;
+    height: auto;
+}
+.list_dl{
+    width: 33.3%;
+    height: 1.9rem;
+    float: left;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+.list_dl>dt>span{
+    font-size: .4rem;
+    color: red;
+}
+.list_dl:nth-child(1)>dt>span,.list_dl:nth-child(3)>dt>span{
+    color: #F2922F;
+}
+.list_dl:nth-child(2)>dt>span,.list_dl:nth-child(8)>dt>span{
+    color: #13D593 ;
+}
+.list_dl:nth-child(4){
+    color: #1FABFF;
+}
+.list_dl:nth-child(5),.list_dl:nth-child(7){
+    color: #FF6A44;
+}
+.list_dl>dd{
+    font-size: .24rem;
+}
