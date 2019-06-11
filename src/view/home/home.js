@@ -37,45 +37,45 @@ class home extends Component {
                         </dl>
                         <dl className={style.list_dl}>
                             <dt>
-                                <span className='iconfont icon-xiaolu'></span>
+                                <span className='iconfont iconxinshangbiaoqing'></span>
                             </dt>
-                            <dd>接单</dd>
+                            <dd>扫码</dd>
+                        </dl>
+                        <dl className={style.list_dl}>
+                            <dt>
+                                <span className='iconfont iconicon_gather_fill'></span>
+                            </dt>
+                            <dd>退款</dd>
+                        </dl>
+                        <dl className={style.list_dl}>
+                            <dt>
+                                <span className='iconfont iconfangwu'></span>
+                            </dt>
+                            <dd>店铺设置</dd>
+                        </dl>
+                        <dl className={style.list_dl}>
+                            <dt>
+                                <span className='iconfont iconicon_workset'></span>
+                            </dt>
+                            <dd>分类管理</dd>
                         </dl>
                         <dl className={style.list_dl}>
                             <dt>
                                 <span className='iconfont icon-xiaolu'></span>
                             </dt>
-                            <dd>接单</dd>
+                            <dd>添加商品</dd>
                         </dl>
                         <dl className={style.list_dl}>
                             <dt>
-                                <span className='iconfont icon-xiaolu'></span>
+                                <span className='iconfont icon-zhangyu'></span>
                             </dt>
-                            <dd>接单</dd>
+                            <dd>商品列表</dd>
                         </dl>
                         <dl className={style.list_dl}>
                             <dt>
-                                <span className='iconfont icon-xiaolu'></span>
+                                <span className='iconfont iconicon_compile'></span>
                             </dt>
-                            <dd>接单</dd>
-                        </dl>
-                        <dl className={style.list_dl}>
-                            <dt>
-                                <span className='iconfont icon-xiaolu'></span>
-                            </dt>
-                            <dd>接单</dd>
-                        </dl>
-                        <dl className={style.list_dl}>
-                            <dt>
-                                <span className='iconfont icon-xiaolu'></span>
-                            </dt>
-                            <dd>接单</dd>
-                        </dl>
-                        <dl className={style.list_dl}>
-                            <dt>
-                                <span className='iconfont icon-xiaolu'></span>
-                            </dt>
-                            <dd>接单</dd>
+                            <dd>收益报表</dd>
                         </dl>
                        
                     </div>
@@ -91,6 +91,7 @@ let state=(state)=>{
     
     return{
         count:state.m_home.count
+        
     }
 }
 export default connect(state)(home);
