@@ -9,8 +9,8 @@ function setRouters(routerconfig){
         if(item.children){
             return <Route path = {item.path} 
             key = {item.name}
-            render={()=>{
-                return <item.component children={item.children}></item.component>
+            render={({history})=>{
+                return <item.component history children={item.children}></item.component>
             }}></Route>
         }
         return <Route path={item.path} component={item.component} key={item.name}></Route>

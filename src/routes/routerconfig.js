@@ -1,11 +1,11 @@
 import React from 'react'
 import Home from '../view/home/home';
 import CommodityDetail from '../view/commodityDetail/commodityDetail';
-
+import ShopSetting from '../view/shopSetting/shopSetting'
 let routers = [
     {
         name:'home',
-        path:'/',
+        path:'/home',
         component:Home,
         children:[
             {
@@ -14,7 +14,11 @@ let routers = [
                 component:()=><h3>wwww</h3>, 
             }
         ]
-    },
+    },{
+        name:'shopSetting',
+        path:'/shopSetting',
+        component:ShopSetting
+    } ,
     {
         name:'commodityDetail',
         path:'/commodityDetail',
