@@ -130,10 +130,10 @@ body,html{
 .list_dl:nth-child(2)>dt>span,.list_dl:nth-child(8)>dt>span{
     color: #13D593 ;
 }
-.list_dl:nth-child(4){
+.list_dl:nth-child(4)>dt>span{
     color: #1FABFF;
 }
-.list_dl:nth-child(5),.list_dl:nth-child(7){
+.list_dl:nth-child(5)>dt>span,.list_dl:nth-child(7)>dt>span{
     color: #FF6A44;
 }
 .list_dl>dd{
