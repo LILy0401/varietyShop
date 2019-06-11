@@ -1,6 +1,8 @@
-
-import Home from '../view/home/home';
 import Putaway from '../view/putaway/putaway';
+import React from 'react'
+import Home from '../view/home/home';
+// import CommodityDetail from '../view/commodityDetail/commodityDetail';
+import ShopSetting from '../view/shopSetting/shopSetting'
 let routers = [
     
     {
@@ -10,7 +12,11 @@ let routers = [
         children:[
           
         ]
-    },
+    },{
+        name:'shopSetting',
+        path:'/shopSetting',
+        component:ShopSetting
+    } ,
     {
         name:'putaway',
         path:'/putaway',
