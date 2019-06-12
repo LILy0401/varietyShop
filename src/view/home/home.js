@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
-import { connect } from 'dva';
 
-// import {setRouters} from '../../routes/index';
+
 class home extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            arr:['取消','确定']
+        }
+    }
     render() {
         return (
             <div className={style.home}>
+               
                 <div className={style.header}>
                     <div className={style.header_p}>
                         <span className="iconfont iconsousuo1"></span>
@@ -84,7 +90,6 @@ class home extends Component {
             </div>
         );
     }
-
     goputaway(){
         this.props.history.push('/putaway');
     }

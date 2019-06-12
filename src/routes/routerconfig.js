@@ -30,13 +30,11 @@ let routers = [
         name:'productList',
         path:'/productList',
         component:ProductList,
-        children:[
-            {
-                name:'/productDetail',
-                path:'/productList/productDetail',
-                component:ProductDetail
-            }   
-        ]
-    }
+    },
+    {
+        name:'productDetail',
+        path:'/productDetail',
+        component:ProductDetail
+    }  
 ]
 export default routers;

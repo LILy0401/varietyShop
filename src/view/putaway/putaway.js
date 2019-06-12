@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import style from './putaway.module.css';
-
+import Headers from '../../components/Header/headers'
 class putaway extends Component {
     render() {
         return (
             <div className={style.putaway_box}>
                
-                <div className={style.put_header}>
-                    <span className="iconfont iconjiantou4"></span>
-                    <p>添加商品</p>
-                    <span>添加平台商品</span>
-                </div>
+               <Headers title="添加商品" titleT='添加平台商品'></Headers>
                 <div className={style.put_div}>
                     <div className={style.put_con}>
                         <div className={style.put_commodity}>
