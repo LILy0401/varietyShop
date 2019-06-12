@@ -1,11 +1,14 @@
 import React from 'react';
-import {Router,Switch,Route } from 'dva/router';
+import {Router,Switch,Route,Redirect} from 'dva/router';
 import routerconfig from './routerconfig'
 
 function setRouters(routerconfig){
 
     return routerconfig.map(item=>{
-       
+       if(item.redirect){
+            return  window.location.pathname==item.path && <Redirect key={item.redirect} exact from={item.path} to={item.redirect}></Redirect>
+       }
+
         if(item.children){
             return <Route path = {item.path} 
             key = {item.name}
