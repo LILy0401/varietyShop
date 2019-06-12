@@ -48,7 +48,7 @@ class home extends Component {
                             </dt>
                             <dd>退款</dd>
                         </dl>
-                        <dl className={style.list_dl}>
+                        <dl className={style.list_dl} onClick={this.goShopSetting}>
                             <dt>
                                 <span className='iconfont iconfangwu'></span>
                             </dt>
@@ -93,6 +93,9 @@ class home extends Component {
     }
     goproductList=()=>{
         this.props.history.push('/productList');
+    }
+    goShopSetting=()=>{
+        this.props.history.push('/shopSetting');
     }
 }   
 

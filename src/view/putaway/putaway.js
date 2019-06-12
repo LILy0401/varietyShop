@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './putaway.module.css';
-import {Button} from 'antd-mobile';
+
 class putaway extends Component {
     render() {
         return (
@@ -76,7 +76,7 @@ class putaway extends Component {
                             </div>
                             <div className={style.photo_div_add}>
                                 
-                                <span className='iconfont iconicon_add'></span>
+                                <span className='iconfont iconplus-add'></span>
                                 <span>上传图片</span>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ class putaway extends Component {
 
                             <div className={style.photo_div_add}>
                                 
-                                <span className='iconfont iconicon_add'></span>
+                                <span className='iconfont iconjia'></span>
                                 <span>上传图片</span>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ class putaway extends Component {
                             
                             <div className={style.photo_div_add_big}>
                                 
-                                <span className='iconfont iconicon_add'></span>
+                                <span className='iconfont iconjia'></span>
                                 <span>上传图片</span>
                             </div>
                         </div>
@@ -129,7 +129,7 @@ class putaway extends Component {
 
                                 <div className={style.photo_div_add}>
                                     
-                                    <span className='iconfont iconicon_add'></span>
+                                    <span className='iconfont iconplus-add'></span>
                                     <span>上传图片</span>
                                 </div>
                             </div>

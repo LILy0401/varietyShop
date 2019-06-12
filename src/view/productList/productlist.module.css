@@ -35,7 +35,7 @@
     background: #FFFFFF;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
     border-radius: .15rem;
-    margin-top:.2rem;
+    margin:.2rem auto;
 }
 .product_every_div{
     width: 100%;

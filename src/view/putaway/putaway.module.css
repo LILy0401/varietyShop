@@ -106,12 +106,11 @@
     padding-right: .2rem;
 }
 .put_type{
-    width: 92%;
+    width: 96%;
     height: auto;
     background: #FFFFFF;
-    border-radius: .1rem;
-    margin-top: .17rem;
-    margin-bottom: .17rem;
+    border-radius: .1rem;   
+    margin: .2rem auto;
     box-shadow: 1px 1px 0 2px  #EBEBEB;
 }
 .put_content{
@@ -134,33 +133,36 @@
     display: flex;
     flex-wrap: wrap;
     height: auto;
+    padding-left: .1rem;
     background: #FFFFFF;
 }
 .photo_div,.photo_div_add{
     width: 32%;
     height: 2.1rem;
     margin-bottom: .17rem;
+    padding:5px;
     position: relative;
 }
 .photo_div_add{
-
     text-align: center;
-    border: 1px solid #eee;
+    border: 1px dashed #eee;
 }
 .photo_div_add_big{
     width: 100%;
     text-align: center;
     height: 2.1rem;
-    border: 1px solid #eee;
+    border: 1px dashed #eee;
 }
 .photo_div_add>span:nth-child(1),.photo_div_add_big>span:nth-child(1){
-   
-    color: #666666;
+    color: #ccc;
     font-size: .8rem;
+    display: block;
+    padding-top: .16rem;
 }
 .photo_div_add>span:nth-child(2),.photo_div_add_big>span:nth-child(2){
+    display: block;
     font-size: .29rem;
-     display: block;
+    color: #DBDBDB;
      
 }
 .photo_div>img{
@@ -182,11 +184,11 @@
 .sku>p{
     width: 2.08rem;
     height: .54rem;
+    margin: auto;
     background: #5ADAD0;
     border-radius: 10px; 
     text-align: center;
     line-height: .54rem;
-    display: flex;
     font-size: .28rem;
     color: #FFFFFF;
 }

@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import { connect } from 'dva';
 import style from './shopSetting.module.css'
 class ShopSetting extends Component {
     render(){
