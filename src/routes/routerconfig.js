@@ -5,7 +5,10 @@ import ProductDetail from '../view/productDetail/productDetail';
 import Home from '../view/home/home';
 import ShopSetting from '../view/shopSetting/shopSetting'
 let routers = [
-    
+    {
+        path:"/",
+        redirect:"/home"
+    },
     {
         name:'home',
         path:'/home',
