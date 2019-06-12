@@ -3,10 +3,12 @@
     margin: 0;
     list-style: none;
 }
+
 .shop_wrap{
     width:100%;
     height:100%;
     overflow: auto;
+    background:#fff;
 }
 .shop_header{
     margin:.4rem 0;
@@ -92,6 +94,140 @@
 }
 .shop_bot{
     width:100%;
-    height:8.9rem;
+    height:auto;
+    overflow-x:hidden;
     border-top:.2rem solid #F8F8F8;
+}
+.shop_bot>ul{
+    width:100%;
+    overflow-x:hidden;
+    margin:0 .3rem;
+    background:#fff;
+}
+.shop_bot>ul>li{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    height:1rem;
+    background: #FFFFFF;
+    box-shadow: inset 0 -1px 0 0 #EBEBEB;
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #333333;
+    line-height: .28rem;
+}
+.shop_bot>ul>li>input{
+    width:60%;
+    height:98%;
+    border:0px;
+    outline: none;
+}
+.shop_bot>ul>li>span{
+    display:inline-block;
+    width:1.3rem;
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #999999;
+    text-align: right;
+    line-height: .28rem;
+}
+.shop_bot>ul>li.shop_check{
+    height:auto;
+    width:100%;
+    display: block;
+}
+.shop_bot>ul>li.shop_check>p{
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #333333;
+    padding-left:.3rem;
+    line-height: .68rem;
+}
+.shop_bot>ul>li.shop_check>div input{
+    width:.4rem;
+    height:.4rem;
+    margin:0 .4rem 0 .2rem;
+    background: #5ADAD0;
+}
+.shop_bot>ul>li.shop_check>div{
+    display: flex;
+    flex-wrap:wrap; 
+    padding-left:.3rem;
+}
+.shop_bot>ul>li.shop_check>div label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:.28rem;
+    color: #999999;
+    line-height: .38rem;
+    margin:.26rem 0;
+}
+li.shop_check>div label>span{
+    display: inline-block;
+    width: .6rem;
+}
+.shop_bot>ul>li.shop_zzdq{
+    width:100%;
+    padding-right:.4rem;
+}
+.shop_bot>ul>li.shop_zzdq>div{
+    display: flex;
+    align-items: center;
+}
+.shop_bot>ul>li.shop_zzdq>div>span{
+    background: #F8F8F8;
+    border-radius: .26rem;
+    display: block;
+    text-align: center;
+    line-height:.54rem;
+    width:1.7rem;
+    height:.54rem;
+}
+.shop_bot>ul>li.shop_zzdq>div>.shop_data{
+    width:1rem;
+}
+.shop_bot>button{
+    width:100%;
+    border:0;
+    height:.88rem;
+    background: #F2922F;
+    font-family: PingFangSC-Regular;
+    font-size: .32rem;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: .32rem;
+}
+.shop_bot>ul>li.shop_ps{
+    display: block;
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #333333;
+    line-height: .28rem;
+}
+.shop_bot>ul>li.shop_last{
+    border-top:.2rem solid #F8F8F8;
+    height:auto;
+    width:100%;
+    display: block;
+}
+.shop_bot>ul>li.shop_last>p{
+    font-family: PingFangSC-Regular;
+    height:.6rem;
+    font-size: .3rem;
+    color: #333333;
+    line-height: .6rem;
+}
+.shop_bot>ul>li.shop_last>div{
+    width:100%;
+    height:auto;
+    display: flex;
+}
+.shop_bot>ul>li.shop_last>div dt{
+    text-align: center;
+}
+.shop_bot>ul>li.shop_last>div dt input{
+    width:.4rem;
+    height:.4rem;
 }
