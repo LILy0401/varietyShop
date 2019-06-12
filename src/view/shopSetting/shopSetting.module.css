@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.shop_wrap{
+    width:100%;
+    height:100%;
+    overflow: auto;
+}
+.shop_header{
+    margin:.4rem 0;
+    height:.88rem;
+    width:100%;
+    box-shadow: inset 0 -1px 0 0 #DBDBDB;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:.5rem;
+    padding-left:.31rem;
+}
+.shop_dp{
+    font-family: PingFangSC-Regular;
+    font-size: 0.36rem;
+    color: #333333;
+    text-align: center;
+}
+.shop_logo{
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #333333;
+    line-height: .28rem;
+    padding-left:.3rem;
+}
+.shop_kuang{
+    width:2.1rem;
+    height:2.1rem;
+    border: 1px dashed #DDDDDD;
+    margin:.2rem .3rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.shop_kuang>span{
+    font-size:.6rem;
+}
+.shop_kuang2{
+    font-family: PingFangSC-Regular;
+    font-size: .24rem;
+    color: #999999;
+    text-align: center;
+    line-height: .24rem;
+    margin-top:.2rem;
+}
+.shop_bn{
+    padding-left:.3rem;
+    margin:.1rem 0;
+}
+
+.shop_bn>b{
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #333333;
+    line-height: .28rem;
+}
+.shop_bn>span{
+    font-family: PingFangSC-Regular;
+    font-size: .28rem;
+    color: #999999;
+    line-height: .28rem;
+}
+.shop_bn_su{
+    height:3rem;
+    width:100%;
+    text-align: center;
+    line-height:1.5rem;
+}
+.shop_bn_su>img{
+    width:100%;
+}
+.shop_bn_su>p{
+    font-family: PingFangSC-Regular;
+    font-size: 24px;
+    color: #999999;
+    text-align: center;
+    line-height: 24px;
+}
+.shop_bn_su>span{
+    font-size:.6rem;
+    transform: rotate(-90deg);
+}
+.shop_bot{
+    width:100%;
+    height:8.9rem;
+    border-top:.2rem solid #F8F8F8;
+}
