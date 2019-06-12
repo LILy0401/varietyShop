@@ -145,16 +145,16 @@
 }
 .photo_div_add{
     text-align: center;
-    border: 1px dashed #eee;
+    border: 1px dashed #ccc;
 }
 .photo_div_add_big{
     width: 100%;
     text-align: center;
     height: 2.1rem;
-    border: 1px dashed #eee;
+    border: 1px dashed #ccc;
 }
 .photo_div_add>span:nth-child(1),.photo_div_add_big>span:nth-child(1){
-    color: #ccc;
+    color: #666;
     font-size: .8rem;
     display: block;
     padding-top: .16rem;
@@ -162,7 +162,7 @@
 .photo_div_add>span:nth-child(2),.photo_div_add_big>span:nth-child(2){
     display: block;
     font-size: .29rem;
-    color: #DBDBDB;
+    color: #ccc;
      
 }
 .photo_div>img{
