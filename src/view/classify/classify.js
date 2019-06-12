@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import style from './classify.module.css';
 import Dialog from '../../components/DialogCom/dialog';
+
+import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
 class classify extends Component {
     constructor(props){
         super(props);
@@ -28,6 +30,7 @@ class classify extends Component {
                             <span className='iconfont iconshanchu'></span>
                         </p>
                     </div>
+                    <Uploadpicture></Uploadpicture>
                 </div>
                 
                 <div className={style.classfiy_footer} onClick={this.addType.bind(this)}>
