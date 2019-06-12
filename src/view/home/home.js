@@ -54,7 +54,7 @@ class home extends Component {
                             </dt>
                             <dd>店铺设置</dd>
                         </dl>
-                        <dl className={style.list_dl}>
+                        <dl className={style.list_dl} onClick={this.goclassify.bind(this)}>
                             <dt>
                                 <span className='iconfont iconicon_workset'></span>
                             </dt>
@@ -66,7 +66,7 @@ class home extends Component {
                             </dt>
                             <dd>添加商品</dd>
                         </dl>
-                        <dl className={style.list_dl}>
+                        <dl className={style.list_dl} onClick={this.goproductList}>
                             <dt>
                                 <span className='iconfont icon-zhangyu'></span>
                             </dt>
@@ -88,6 +88,12 @@ class home extends Component {
     goputaway(){
         this.props.history.push('/putaway');
     }
-}
+    goclassify(){
+        this.props.history.push('/classify');
+    }
+    goproductList=()=>{
+        this.props.history.push('/productList');
+    }
+}   
 
 export default home;

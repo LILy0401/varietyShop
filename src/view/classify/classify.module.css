@@ -1,0 +1,59 @@
+.classfiy{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.classfiy_box{
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    padding: .18rem;
+}
+.classify_div{
+    width: 100%;
+    height: 1.4rem;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.12);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+.classfiy_p_o,.classfiy_p_t{
+    flex: 5;
+    padding: 0 .1rem;
+}
+.classfiy_p_o>span:nth-child(1){
+    display: block;
+    font-size: .32rem;
+    font-family: PingFangSC-Regular;
+color: #333333;
+line-height: .32rem;
+}
+.classfiy_p_o>span:nth-child(2){
+    display: block;
+    font-size: .24rem;
+    padding: .1rem 0;
+    font-family: PingFangSC-Regular;
+color: #999999;
+}
+.classfiy_p_t{
+    flex: 5;
+    line-height: 1.4rem;
+    text-align: right;
+}
+.classfiy_p_t>span{
+    font-size: .45rem;
+    color: #C6C6C6;
+    padding-right: .13rem;
+}
+.classfiy_footer{
+    width: 100%;
+    height: .88rem;
+    background: #F2922F;
+    font-size: .35rem;
+    text-align: center;
+    line-height: .88rem;
+    color: #FFFFFF;
+}
