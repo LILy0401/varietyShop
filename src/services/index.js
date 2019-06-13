@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import request from '../utiles/http'
 // request.post('/store/register',{
 //     body:{
@@ -74,3 +75,5 @@ request.put('/store/goods/cat.add',{
 //         authorization:'12asdf'
 //     }
 // })
+=======
+>>>>>>> 69ac1bcb483d188b23514b21bc9ab2daac23f8e3

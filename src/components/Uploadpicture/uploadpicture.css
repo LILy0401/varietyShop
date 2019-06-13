@@ -1,0 +1,75 @@
+.photo_div_add{
+    width: 2.1rem;
+    height: 2.1rem;
+    text-align: center;
+    margin-top: .15rem;
+    border: 1px dashed #ccc;
+    position: relative;
+}
+.photo_div_add_big{
+    width: 100%;
+    height: 2.1rem;
+    text-align: center;
+    margin-top: .15rem;
+    height: 2.1rem;
+    position: relative;
+    border: 1px dashed #ccc;
+}
+
+.photo_div_add>span:nth-child(1),.photo_div_add_big>span:nth-child(1){
+    color: #666;
+    font-size: .8rem;
+    display: block;
+    padding-top: .16rem;
+}
+.photo_div_add>span:nth-child(2),.photo_div_add_big>span:nth-child(2){
+    display: block;
+    font-size: .29rem;
+    color: #ccc;  
+}
+
+.photo_div_add>input,.photo_div_add_big>input{
+    width: 2.1rem;
+    height: 2.1rem;
+    position: absolute;
+    opacity: 0;
+    top: 35%;
+    left: 45%;
+    display: block;
+    font-size: .29rem;
+    color: #ccc;  
+}
+.photo_div>img{
+    width: 100%;
+    height: 2.1rem;
+}
+.photo_div_big{
+    width: 100%;
+    height: 2.5rem;
+    position: relative;
+}
+.photo_div_big>img{
+    width: 100%;
+    height: 2.5rem;
+}
+.photo_div>span,.photo_div_big>span{
+    position: absolute;
+    right: .1rem;
+    top:.1rem;
+    font-size: .28rem;
+}
+.photo{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    padding-left: .1rem;
+    background: #FFFFFF;
+}
+.photo_div,.photo_div_add{
+    width: 32%;
+    height: 2.1rem;
+    margin-bottom: .17rem;
+    padding:5px;
+    position: relative;
+}

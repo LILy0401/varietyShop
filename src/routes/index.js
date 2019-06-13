@@ -27,6 +27,5 @@ let ROUTER = (({history,app})=>{
                 </Switch>
             </Router>
 })
-
 export {setRouters};
 export default ROUTER;

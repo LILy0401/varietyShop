@@ -7,7 +7,7 @@ class Dialog extends Component {
             isShow:false
         }
     }
-
+    // 使用dialog请前往classify.js
     render() {
         return (
             <div className='cll_dialog' style={{'display': this.props.isShow?'block':'none'}}>
