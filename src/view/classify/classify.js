@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import style from './classify.module.css';
 import Dialog from '../../components/DialogCom/dialog';
-
-import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
+import request from '../../utiles/http';
+import Cookies from 'js-cookie';
 class classify extends Component {
     constructor(props){
         super(props);
@@ -12,13 +12,15 @@ class classify extends Component {
         }
     }
     componentWillMount(){
-        fetch('/store/goods/cat.list',{
-            method:'POST',
+        request.post('/store/goods/cat.list',{
+            headers:{
+                authrization:Cookies.get('token')
+            },
+            body:{
+                store_id:'7fd2189e7e33562e060f58e0b88035cf'
+            }
             
-            store_id:'1e01685654c1cb5672e896c58f011dbf'
-      
         })
-        .then((res)=>res.json())
         .then(res=>{
             console.log(res);
         })

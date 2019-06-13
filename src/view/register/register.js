@@ -53,32 +53,32 @@ class register extends Component {
             </div>
         );
     }
-    setUser=()=>{
-       
-        request.post('/store/register',{
-            body:{
-                user_name:'写死',
-                user_pwd:'wangmeng!1',
-                phone:17600086280
-            }
-        })
-        .then(res=>{
-            console.log(res);
-        })
-
-        // let {user_name,user_pwd,phone} = this.state;
-        // if(user_name&&user_pwd&&phone){
-        //     request.post('/store/register',{
-        //         body:{
-        //             user_name:this.state.user_name,
-        //             user_pwd:this.state.user_pwd,
-        //             phone:this.state.phone
-        //         }
-        //     })
-        //     .then(res=>{
-        //         console.log(res);
-        //     })
-        // }
+    setUser=()=>{ 
+        let {user_name,user_pwd,phone} = this.state;
+        if(user_name&&user_pwd&&phone){
+            request.post('/store/register',{
+                body:{
+                    user_name:user_name,
+                    user_pwd:user_pwd,
+                    phone:phone
+                }
+            })
+            .then(res=>{
+                console.log(res);
+                if(res.code == 1){
+                    alert('注册成功')
+                    setTimeout(()=>{
+                        this.props.history.push('/home');
+                    },1000)
+                    
+                }else{
+                    alert('信息错误');
+                }
+               
+            })
+        }else{
+            alert('请输入全部信息');
+        }
     }
 }
 

@@ -94,6 +94,7 @@ class home extends Component {
         this.props.history.push('/putaway');
     }
     goclassify(){
+       
         this.props.history.push('/classify');
     }
     goproductList=()=>{
