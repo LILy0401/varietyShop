@@ -108,13 +108,7 @@
     padding-left: .1rem;
     background: #FFFFFF;
 }
-.photo_div,.photo_div_add{
-    width: 32%;
-    height: 2.1rem;
-    margin-bottom: .17rem;
-    padding:5px;
-    position: relative;
-}
+
 .photo_div_add{
     text-align: center;
     border: 1px dashed #ccc;

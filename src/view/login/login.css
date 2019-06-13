@@ -1,0 +1,67 @@
+.cll_login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #fff;
+    flex-direction: column;
+  
+}
+.cll_login_div{
+   width: 100%;
+   height: 100%;
+   padding: 0 .1rem;
+}
+.cll_user_name{
+    margin-top: 1rem;
+    padding: 0 .1rem;
+    width: 100%;
+    height: .8rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.cll_user_name>span:nth-child(1){
+    display: block;
+    width: 1.6rem;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .25rem;
+
+    text-align: justify;
+    vertical-align: top;
+}
+.cll_user_name>span:nth-child(1)::after {
+    display: inline-block;
+    width: 100%;
+    content: ' ';
+    height: 0;
+}
+.cll_user_name>input:nth-child(2){
+    width: 4rem;
+    height: .6rem;
+    padding-left: .1rem;
+    border: none;
+    font-size: .28rem;
+}
+.cll_p{
+    width: 100%;
+    height: .6rem;
+    text-align: center;
+    margin-top: .9rem;
+}
+.cll_btn{
+    width: 90%;
+    height: .6rem;
+    border: none;
+    background: purple;
+    font-size: .32rem;
+    color: #fff;
+}
+.cll_zuce{
+    width: 100%;
+    height: .8rem;
+    text-align: center;
+    line-height: .8rem;
+    color: purple;
+    font-size: .2rem;
+}

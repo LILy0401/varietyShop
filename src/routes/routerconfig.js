@@ -4,6 +4,8 @@ import ProductList from '../view/productList/productlist.js';
 import ProductDetail from '../view/productDetail/productDetail';
 import Home from '../view/home/home';
 import ShopSetting from '../view/shopSetting/shopSetting'
+import Login from '../view/login/login';
+import Register from '../view/register/register';
 let routers = [
     {
         path:"/",
@@ -13,9 +15,6 @@ let routers = [
         name:'home',
         path:'/home',
         component:Home,
-        children:[
-          
-        ]
     },{
         name:'shopSetting',
         path:'/shopSetting',
@@ -38,6 +37,14 @@ let routers = [
         name:'productDetail',
         path:'/productDetail',
         component:ProductDetail
-    }  
+    },{
+        name:'login',
+        path:'/login',
+        component:Login
+    },{
+        name:'register',
+        path:'/register',
+        component:Register
+    }
 ]
 export default routers;

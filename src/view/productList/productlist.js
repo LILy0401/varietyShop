@@ -13,11 +13,6 @@ class productlist extends Component {
                         <input type='text' placeholder='请输入商品名称'></input>
                     </div>
                     <Acommodity type='yes'></Acommodity>
-                    <Acommodity type='yes'></Acommodity>
-                    <Acommodity type='yes'></Acommodity>
-                    <Acommodity type='yes'></Acommodity>
-                    <Acommodity type='yes'></Acommodity>
-                    <Acommodity type='yes'></Acommodity>
                 </div>
                 <div className={style.product_footer}>
                     <p className={style.allChecked}>

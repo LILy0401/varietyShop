@@ -1,45 +1,56 @@
 import React, { Component } from 'react';
 import './uploadpicture.css';
-import { ImagePicker,WingBlank } from 'antd-mobile';
+
 
 class uploadpicture extends Component {
+    
     state = {
-        files:  [],
-        multiple: false,
+        src:null
     }
+    div = '';
     render() {
-        
+        let {src} = this.state
         return (
-             <div className="photo_div_add_big">
-                                
-                <span className='iconfont iconplus-add'></span>
-                <span>上传图片</span>
-                <input type='file'></input>
+            <div className="photo">
+                {
+
+                    src&&src?<div className={this.props.type == 'big'?'photo_div_big':'photo_div'}>
+                        <img src={this.state.src}></img>
+                        <span className='iconfont iconshanchu2' onClick={this.delPicture}></span>
+                    </div>:null
+                }
+                 
+                <div className={this.props.type == 'big'?'photo_div_add_big':'photo_div_add'}>                
+                    <span className='iconfont iconplus-add'></span>
+                    <span>{this.props.title}</span>
+                    <input type='file' onChange={this.getUrl.bind(this)}></input>
+                </div>
             </div>
-            // <WingBlank>
-            //     <ImagePicker
-            //         files={this.state.files}
-            //         onChange={this.onChange}
-            //         onImageClick={(index, fs) => console.log(index, fs)}
-            //         selectable={this.state.files.length < 3}
-            //         multiple={this.state.multiple}
-            //     ></ImagePicker>
-            // </WingBlank>
-           
         );
     }
-    onChange = (files, type, index) => {
-        console.log(files, type, index);
-        this.setState({
-            files,
-        });
+    delPicture(){
+        console.log('删除图片');
     }
-    onSegChange = (e) => {
-        const index = e.nativeEvent.selectedSegmentIndex;
-        this.setState({
-            multiple: index === 1,
-        });
+    getUrl(e){
+        let { url } = this.props;
+        e.persist();
+        let FD =  new FormData()
+        FD.append('img1',e.target.files[0]);
+        fetch(url,{
+            method:'POST',
+            body:FD
+        })
+        .then(res=>res.json())
+        .then((res)=>{
+            console.log(res);
+            if(res.code == 1){
+                this.setState(()=>{
+                    return {src:res.url[0].url}
+                })
+            }
+        })
     }
+
 }
 
 export default uploadpicture;

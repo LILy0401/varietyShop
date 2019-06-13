@@ -11,14 +11,30 @@ class classify extends Component {
             isShow:false
         }
     }
+    componentWillMount(){
+        fetch('/store/goods/cat.list',{
+            method:'POST',
+            
+            store_id:'1e01685654c1cb5672e896c58f011dbf'
+      
+        })
+        .then((res)=>res.json())
+        .then(res=>{
+            console.log(res);
+        })
+    }
     render() {
         return (
             <div className={style.classfiy}>
-               
+               {/*
+                dialog
+                title:弹框信息,
+                btn:数组，dialog的取消和确定按钮
+                change:是判断显示隐藏,以及返回信息,是个函数
+             */}
                 <Dialog title='填写分类名称'change={this.change} btn={this.state.arr} isShow={this.state.isShow}>
                     <input type='text' placeholder='请输入'></input>
                 </Dialog>
-                
                 <div className={style.classfiy_box}>
                     <div className={style.classify_div}>
                         <p className={style.classfiy_p_o}>
@@ -30,9 +46,8 @@ class classify extends Component {
                             <span className='iconfont iconshanchu'></span>
                         </p>
                     </div>
-                    <Uploadpicture></Uploadpicture>
+                   
                 </div>
-                
                 <div className={style.classfiy_footer} onClick={this.addType.bind(this)}>
                         添加分类
                 </div>
