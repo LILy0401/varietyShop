@@ -1,6 +1,5 @@
 //兼容
 import 'isomorphic-fetch'
-
 class Query{
     constructor(options={headers:{}}){
         console.log(options)
@@ -21,19 +20,19 @@ class Query{
         // }
     }
     setConfig(url,options,method){
-        if(method=='get' && options.query){
+        if(method === 'get' && options.query){
             let {query} = options;
             let usp = new URLSearchParams('')
             Object.entries(query).forEach(item=>{
                 usp.append(item[0],item[1])
             })
             url=url+'?'+usp.toString();
-            console.log(usp.toString())
+            // console.log(usp.toString())
         }
         // if(method='post' && options.body){
 
         // }
-        console.log(options)
+        // console.log(options)
         let {config} = this;
             // let headers = {...config.headers,...options.headers};
             let headers = config.headers;
@@ -49,7 +48,7 @@ class Query{
         }
     get(url,options={}){
         return new Promise((resolve,reject)=>{
-           let {murl,headers} = this.setConfig(url,options,'get')
+           let {murl,headers} = this.setConfig(url,options,'get');
             fetch(murl,{
                 headers
             }).then(res=>res.json())
@@ -60,7 +59,7 @@ class Query{
     }
     post(url,options){
         return new Promise((resolve,reject)=>{
-            let {murl,headers} = this.setConfig(url,options,'post')
+            let {headers} = this.setConfig(url,options,'post')
             let o = {
                 method:'POST',
                 headers:{
@@ -70,7 +69,8 @@ class Query{
             if(options.body){
                 o.body = JSON.stringify(options.body)//在接口中自己进行转化
             }
-            fetch(url,o).then(res=>res.json())
+            fetch(url,o)
+            .then(res=>res.json())
             .then(res=>{
                 resolve(res)
             })
@@ -78,7 +78,7 @@ class Query{
     }
     delete(url,options){
         return new Promise((resolve,reject)=>{
-            let {murl,headers} = this.setConfig(url,options,'post')
+            let {headers} = this.setConfig(url,options,'post')
             let o = {
                 method:'DELETE',
                 headers:{
@@ -96,7 +96,7 @@ class Query{
     }
     put(url,options){
         return new Promise((resolve,reject)=>{
-            let {murl,headers} = this.setConfig(url,options,'post')
+            let {headers} = this.setConfig(url,options,'post')
             let o = {
                 method:'PUT',
                 headers:{

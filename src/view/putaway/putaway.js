@@ -5,7 +5,6 @@ class putaway extends Component {
     render() {
         return (
             <div className={style.putaway_box}>
-               
                <Headers title="添加商品" titleT='添加平台商品'></Headers>
                 <div className={style.put_div}>
                     <div className={style.put_con}>
@@ -59,15 +58,15 @@ class putaway extends Component {
                         <p className={style.com_picture}>商品图片</p>
                         <div className={style.photo}>
                             <div className={style.photo_div}>
-                                <img src='./1.jpg'></img>
+                                <img src='./1.jpg' alt='img'></img>
                                 <span className='iconfont iconshanchu2'></span>
                             </div>
                             <div className={style.photo_div}>
-                                <img src='./1.jpg'></img>
+                                <img src='./1.jpg' alt='img'></img>
                                 <span className='iconfont iconshanchu2'></span>
                             </div>
                             <div className={style.photo_div}>
-                                <img src='./1.jpg'></img>
+                                <img src='./1.jpg' alt='img'></img>
                                 <span className='iconfont iconshanchu2'></span>
                             </div>
                             <div className={style.photo_div_add}>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { connect } from 'dva';
 import style from './shopSetting.module.css'
+import request from '../../utiles/http'
 import { DatePicker, List } from 'antd-mobile';
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
+import 'antd-mobile/lib/date-picker/locale/en_US';
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 // GMT is not currently observed in the UK. So use UTC now.
-const utcNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
+// const utcNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
 
 // Make sure that in `time` mode, the maxDate and minDate are within one day.
 let minDate = new Date(nowTimeStamp - 1e7);
@@ -17,28 +17,12 @@ if (minDate.getDate() !== maxDate.getDate()) {
     minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
 }
 
-function formatDate(date) {
-    /* eslint no-confusing-arrow: 0 */
-    const pad = n => n < 10 ? `0${n}` : n;
-    const dateStr = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-    const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-    return `${dateStr} ${timeStr}`;
-}
-
-// If not using `List.Item` as children
-// The `onClick / extra` props need to be processed within the component
-const CustomChildren = ({ extra, onClick, children }) => (
-    <div
-        onClick={onClick}
-        style={{ backgroundColor: '#fff', height: '45px', lineHeight: '45px', padding: '0 15px' }}
-    >
-        {children}
-        <span style={{ float: 'right', color: '#888' }}>{extra}</span>
-    </div>
-);
-
 class ShopSetting extends Component {
     state = {
+        shopName: '',
+        addPrice: '',
+        psf: '',
+        indexstyle: '0',
         startValue: null,
         time: now,
         endValue: null,
@@ -75,17 +59,54 @@ class ShopSetting extends Component {
     };
     onChange = (field, value) => {
         this.setState({
-            [field]: value,
+            // [field]: value,
         });
     };
- 
-    componentWillMount(){
-        console.log('事不过三，其实一次就够了，只是你不张心罢了')
-        console.log(this)
+    shopNameFn(e) {
+        this.setState({
+            shopName: e.target.value
+        })
     }
-   
+    addPriceFn(e) {
+        this.setState({
+            addPrice: e.target.value
+        })
+    }
+    psfFn(e) {
+        this.setState({
+            psf: e.target.value
+        })
+    }
+    // 选择布局样式
+    radioFn(e) {
+        this.setState({
+            indexstyle: e.target.value
+        })
+    }
+    componentWillMount() {
+    }
+    saveFn() {
+        request.post('/store/decorate', {
+            body: {
+                banner: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+                store_id: '7fd2189e7e33562e060f58e0b88035cf',
+                store_name: this.state.shopName,
+                brand_name: this.state.shopName,
+                main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+                contact_number: '13612344321,021-12336754',
+                business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
+                indexstyle_id: this.state.indexstyle,
+                delivery_fee: this.state.psf,
+                logo: 'base64'
+            },
+            headers: {
+                authrization: 'asdascxv123asd'
+            }
+        }).then(res => console.log(res))
+    }
+
     render() {
-        const { startValue, endValue, endOpen } = this.state;
+        // const { startValue, endValue, endOpen } = this.state;
         return (
             <div className={style.shop_wrap}>
                 <div className={style.shop_header}>
@@ -110,9 +131,9 @@ class ShopSetting extends Component {
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
-                        <li><span>店铺名称</span><input type='text' placeholder='请输入店铺名称'></input></li>
-                        <li><span>起送价格</span><input type='text' placeholder='请输入起送价格'></input></li>
-                        <li><span>配 送 费</span><input type='text' placeholder='请输入配送费'></input></li>
+                        <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)} placeholder='请输入店铺名称'></input></li>
+                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPrice(e)} placeholder='请输入电话号'></input></li>
+                        <li><span>配 送 费</span><input type='text' onChange={(e) => this.psf(e)} placeholder='请输入配送费'></input></li>
                         <li className={style.shop_check}>
                             <p>营业周期</p>
                             <div>
@@ -128,43 +149,46 @@ class ShopSetting extends Component {
                             <span>营业时间</span>
                             <div> <span>08:00 <i className='iconfont iconjiantou-copy-copy'></i></span> 至 <span>22:00 <i className='iconfont iconjiantou-copy-copy'></i></span></div>
                         </li>
-                       <li className={style.shop_ps}>
-                            <List className="date-picker-list" style={{ backgroundColor: 'white' ,fontSize:'.28rem' ,marginLeft:0 }}>
-                            <DatePicker
-                                mode="time"
-                                minuteStep={2}
-                                use12Hours
-                                value={this.state.time}
-                                onChange={time => this.setState({ time })}
-                            >
-                                <List.Item arrow="horizontal">配送时效</List.Item>
-                            </DatePicker>
-                           
+                        <li className={style.shop_ps}>
+                            <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>
+                                <DatePicker
+                                    mode="time"
+                                    minuteStep={2}
+                                    use12Hours
+                                    value={this.state.time}
+                                    onChange={time => this.setState({ time })}
+                                >
+                                    <List.Item arrow="horizontal">配送时效</List.Item>
+                                </DatePicker>
+
                             </List>
-                        </li> 
+                        </li>
                         <li className={style.shop_last}>
                             <p>首页风格</p>
                             <div>
-                                <dl>
-                                    <dd>
-                                        <img src='./2.gif'></img>
-                                    </dd>
-                                    <dt><input type='radio' name='a'></input></dt>
-                                </dl>
-                                <dl>
-                                    <dd>
-                                    <img src='./2.gif'></img>
-                                    </dd>
-                                    <dt><input type='radio' name='a'></input></dt>
-                                </dl>
+                                <label name='a'>
+                                    <dl>
+                                        <dd>
+                                            <img src='./2.gif' alt='单列图文'></img>
+                                        </dd>
+                                        <dt><input onChange={(e) => this.radioFn(e)} type='radio' value='0' name='a'></input></dt>
+                                    </dl>
+                                </label>
+                                <label name='a'>
+                                    <dl>
+                                        <dd>
+                                            <img src='./2.gif' alt='双列图文'></img>
+                                        </dd>
+                                        <dt><input onChange={(e) => this.radioFn(e)} type='radio' value='1' name='a'></input></dt>
+                                    </dl>
+                                </label>
                             </div>
                         </li>
                     </ul>
-                    <button>保存</button>
+                    <button onClick={this.saveFn.bind(this)}>保存</button>
                 </div>
             </div>
         )
     }
-  
 }
 export default ShopSetting

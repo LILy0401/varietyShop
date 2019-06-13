@@ -18,12 +18,21 @@ request.put('/store/goods/cat.add',{
 // }).then(res=>console.log(res))
 
 // //post 接口跑通
-// request.post('/store/goods/cat.list',{
+// request.post('/store/decorate',{
 //     body:{
-//         store_id:'1e01685654c1cb5672e896c58f011dbf'
-//     },
+//         banner:'1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+//         store_id:'1e01685654c1cb5672e896c58f011dbf',
+//         store_name:'五谷粥坊',
+//         brand_name:'五谷粥坊',
+//         main_image:'1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+//         contact_number:'13612344321,021-12336754',
+//         business_time:'周一-周五 09:00-20:00,周六-周日 10:00-22:00',
+//         indexstyle_id:'1',
+//         delivery_fee:'10',
+//         logo:'base64'
+//     }, 
 //     headers:{
-//         authorization:'asdfg'
+//         authrization:'asdascxv123asd'
 //     }
 // }).then(res=>{
 //     console.log(res)
