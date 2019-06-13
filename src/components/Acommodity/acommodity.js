@@ -8,9 +8,9 @@ class acommodity extends Component {
                 
                 <div className={style.product_every_div}>
                     {
-                        this.props.type=='yes'?<input type='checkbox'></input>:''
+                        this.props.type === 'yes'?<input type='checkbox'></input>:''
                     }
-                    <img src='./1.jpg'></img>
+                    <img src='./1.jpg' alt='banner'></img>
                     <span>苗掌柜香辣小鱼干</span>
                     <span className='iconfont iconjiantou'></span>
                 </div>

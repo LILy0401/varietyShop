@@ -6,7 +6,7 @@ function setRouters(routerconfig){
 
     return routerconfig.map(item=>{
        if(item.redirect){
-            return  window.location.pathname==item.path && <Redirect key={item.redirect} exact from={item.path} to={item.redirect}></Redirect>
+            return  window.location.pathname === item.path && <Redirect key={item.redirect} exact from={item.path} to={item.redirect}></Redirect>
        }
 
         if(item.children){

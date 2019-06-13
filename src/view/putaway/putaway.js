@@ -14,7 +14,6 @@ class putaway extends Component {
     render() {
         return (
             <div className={style.putaway_box}>
-               
                <Headers title="添加商品" titleT='添加平台商品'></Headers>
                 <div className={style.put_div}>
                     <div className={style.put_con}>
@@ -81,6 +80,7 @@ class putaway extends Component {
                         <div className="photo">
                              {/* type:big|small */}
                             <Uploadpicture title='上传图片' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
+                       
                         </div>
                        
                         <p className={style.com_picture}>购物车图(必填)</p>
