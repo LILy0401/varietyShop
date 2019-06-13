@@ -1,13 +1,23 @@
 import request from '../utiles/http'
-request.put('/store/goods/cat.add',{
+request.post('/store/register',{
     body:{
-        cat_name:'蔬1菜',
-        store_id:'1e01685654c1cb5672e896c58f011dbfs'
-    },
-    headers:{
-        authorization:'asdfg'
+        user_name:'写死',
+        user_pwd:'wangmeng!1',
+        phone:17600086280
     }
-}).then(res=>console.log(res))
+})
+.then(res=>{
+    console.log(res);
+})
+// request.put('/store/goods/cat.add',{
+//     body:{
+//         cat_name:'蔬1菜',
+//         store_id:'1e01685654c1cb5672e896c58f011dbfs'
+//     },
+//     headers:{
+//         authorization:'asdfg'
+//     }
+// }).then(res=>console.log(res))
 // request.delete('/store/goods/cat.delete',{
 //     body:{
 //         cat_id:'8217c3fdb19242d7fd86f558d1872b48'
