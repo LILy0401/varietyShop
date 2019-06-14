@@ -68,3 +68,17 @@
     height: .8rem;
     padding-left: .1rem;
 }
+.dia-enter{
+    opacity: 0;   
+}
+.dia-enter-active{
+    opacity: 1;
+    transform: opacity 3s ease;
+}
+.dia-leave{
+    opacity: 1;
+    transform: opacity 2s ease;
+}
+.dia-leave-active{
+    opacity:0;    
+}

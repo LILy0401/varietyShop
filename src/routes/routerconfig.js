@@ -9,7 +9,7 @@ import Register from '../view/register/register';
 let routers = [
     {
         path:"/",
-        redirect:"/home"
+        redirect:"/login"
     },
     {
         name:'home',

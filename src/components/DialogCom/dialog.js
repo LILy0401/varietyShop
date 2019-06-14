@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './dialog.css';
+import Animate from 'rc-animate';
 class Dialog extends Component {
     constructor(){
         super();
@@ -9,19 +10,26 @@ class Dialog extends Component {
     }
     // 使用dialog请前往classify.js
     render() {
+        console.log(this.props.isShow,'dialog')
         return (
-            <div className='cll_dialog' style={{'display': this.props.isShow?'block':'none'}}>
-                <div className='cll_dialog_div'>
-                    <p className='cll_title'>{this.props.title}</p>
-                    <div className='cll_con'>
-                       {this.props.children}
+            <Animate transitionName='dia'>
+                {
+                    this.props.isShow &&
+                    <div className='cll_dialog'>
+                        <div className='cll_dialog_div'>
+                            <p className='cll_title'>{this.props.title}</p>
+                            <div className='cll_con'>
+                            {this.props.children}
+                            </div>
+                            <p>
+                                <span onClick={this.cancle.bind(this)}>{this.props.btn[0]}</span>
+                                <span onClick={this.confirm.bind(this)}>{this.props.btn[1]}</span>
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        <span onClick={this.cancle.bind(this)}>{this.props.btn[0]}</span>
-                        <span onClick={this.confirm.bind(this)}>{this.props.btn[1]}</span>
-                    </p>
-                </div>
-            </div>
+                }
+               
+            </Animate>
         );
     }
     confirm(){
@@ -29,7 +37,6 @@ class Dialog extends Component {
             isShow:false
         })
         this.props.change(this.state.isShow,{msg:'确定'})
-       
     }
     cancle(){
         this.setState({

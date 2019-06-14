@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from './putaway.module.css';
 import Headers from '../../components/Header/headers'
 import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
+
 class putaway extends Component {
     constructor(props){
         super(props);
@@ -9,10 +10,13 @@ class putaway extends Component {
             goods_name:'',
             cat:'',
             price:'',
-            dataImg:['1']
+            dataImg:['1'],
+            list:['克','千克','吨']
         }
     }
+    
     getMsg=(data,num)=>{
+
         if(this.state.dataImg.length<num){
             this.setState((state)=>{
            
@@ -23,7 +27,7 @@ class putaway extends Component {
                 }
             })
         }
-        console.log(this.state.dataImg)
+        console.log(data)
     }
     render() {
         return (
@@ -37,7 +41,8 @@ class putaway extends Component {
                                 <span>商品名称</span>
                                 <p>
                                     <input type='text' value={this.goods_name} onChange={(e)=>{
-                                        this.setState({
+                                    
+                                       this.setState({
                                             goods_name:e.target.value
                                         })
                                     }} placeholder='选择商品名称'></input>
@@ -64,10 +69,12 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                                <span>
-                                    克
-                                    <i className='iconfont iconjiantou-copy-copy'></i>
-                                </span>
+                               
+                                {/* <select value='克'>
+                                    <option>克</option>
+                                    <option>千克</option>
+                                    <option>吨</option>
+                                </select> */}
                             </div>
                             <div className={style.put_p}>
                                 <span>商品售价</span>
@@ -122,10 +129,8 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                                <span>
-                                    克
-                                    <i className='iconfont iconjiantou-copy-copy'></i>
-                                </span>
+                                {/* <Selection></Selection> */}
+                               
                             </div>
                             <div className={style.put_p}>
                                 <span>商品售价</span>
@@ -166,6 +171,7 @@ class putaway extends Component {
         this.props.history.push('/classify');
     }
     putaway=()=>{
+        if(this.state.goods_name&&this.state.cat&&this.state.price)
         fetch('/store/goods/create',{
             method:'POST',
             header:{

@@ -62,6 +62,7 @@ class ShopSetting extends Component {
         dataImg:['1']
     };
     getMsg=(data,num)=>{
+        
         if(this.state.dataImg.length<num){
             this.setState((state)=>{
            
@@ -78,7 +79,7 @@ class ShopSetting extends Component {
         this.setState({
             // [field]: value,
         });
-    };
+    }
     shopNameFn(e) {
         this.setState({
             shopName: e.target.value
