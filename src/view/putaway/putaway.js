@@ -8,8 +8,22 @@ class putaway extends Component {
         this.state={
             goods_name:'',
             cat:'',
-            price:''
+            price:'',
+            dataImg:['1']
         }
+    }
+    getMsg=(data,num)=>{
+        if(this.state.dataImg.length<num){
+            this.setState((state)=>{
+           
+                let arr = [...state.dataImg]
+                arr.length<3 && arr.push('1')
+                return {
+                    dataImg:arr
+                }
+            })
+        }
+        console.log(data);
     }
     render() {
         return (
@@ -74,24 +88,31 @@ class putaway extends Component {
                             </div>
                         </div>
                     </div>
-
+                     {/* type:big|small */}
                     <div className={style.put_content}>
                         <p className={style.com_picture}>商品图片</p>
                         <div className="photo">
-                             {/* type:big|small */}
-                            <Uploadpicture title='上传图片' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
+                            
+                             {
+                                 this.state.dataImg.map((ele,index)=>{
+                                     return  <Uploadpicture num='3' key={index} title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
+                                 })
+                             }
+                          
                        
                         </div>
                        
                         <p className={style.com_picture}>购物车图(必填)</p>
                         <div className={style.photo}>
-                            <Uploadpicture title='上传图片' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
-                            
+                           
+                            <Uploadpicture title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
+                               
                         </div>
                         <p className={style.com_picture}>商品详情</p>
                         <div className={style.photo}>
-                       
-                        <Uploadpicture title='上传图片' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
+                            
+                                <Uploadpicture  title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
+                             
                         </div>
                         <div className={style.put_con}>
                        
@@ -122,7 +143,7 @@ class putaway extends Component {
                             <p className={style.com_picture}>购物车图(必填)</p>
                             <div className={style.photo}>
 
-                            <Uploadpicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
+                                <Uploadpicture title='上传banner' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
                             </div>
                         </div>
                     </div>
@@ -140,6 +161,7 @@ class putaway extends Component {
         );
         
     }
+   
     goClassify=()=>{
         this.props.history.push('/classify');
     }

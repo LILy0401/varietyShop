@@ -10,6 +10,15 @@
     overflow: auto;
     background:#fff;
 }
+.photo{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    padding-left: .1rem;
+    background: #FFFFFF;
+}
+
 .shop_header{
     margin:.4rem 0;
     height:.88rem;

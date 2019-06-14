@@ -58,8 +58,22 @@ class ShopSetting extends Component {
             week: '周日',
             id: '7',
             flag: false
-        }]
+        }],
+        dataImg:['1']
     };
+    getMsg=(data,num)=>{
+        if(this.state.dataImg.length<num){
+            this.setState((state)=>{
+           
+                let arr = [...state.dataImg]
+                arr.length<3 && arr.push('1')
+                return {
+                    dataImg:arr
+                }
+            })
+        }
+        console.log(data,'我在这里');
+    }
     onChange = (field, value) => {
         this.setState({
             // [field]: value,
@@ -118,14 +132,22 @@ class ShopSetting extends Component {
                     <span></span>
                 </div>
                 <p className={style.shop_logo}>店铺LOGO</p>
-                <UploadPicture title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
+                
+                    <UploadPicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
+                   
+                
                 <p className={style.shop_bn}><b>店铺banner</b><span>（1-3张）</span></p>
                 <div className={style.shop_bn_box}>
                     <div className={style.shop_bn_su}>
                         <img src='./1.gif' alt='加载失败' title='店铺banner'></img>
                     </div>
-                    <UploadPicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
-                   
+                    <div className="photo">
+                        {
+                            this.state.dataImg.map((ele,index)=>{
+                                return  <UploadPicture key={index} num='3' getMsg={this.getMsg} title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
+                            })
+                        }
+                   </div>
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
