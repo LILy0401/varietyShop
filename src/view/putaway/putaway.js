@@ -23,7 +23,7 @@ class putaway extends Component {
                 }
             })
         }
-        console.log(this.state.dataImg)
+        console.log(data);
     }
     render() {
         return (
