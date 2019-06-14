@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './shopSetting.module.css'
-import {Register} from '../../services'
+import { Register } from '../../services'
 import { DatePicker, List } from 'antd-mobile';
 import Select from '../../components/selects'
 import UploadPicture from '../../components/Uploadpicture/uploadpicture';
@@ -24,7 +24,7 @@ class ShopSetting extends Component {
         time: now,
         endValue: null,
         endOpen: false,
-        as1:['第一组','相信自己','50分钟'],
+        as1: ['第一组', '相信自己', '50分钟'],
         weeks: [{
             week: '周一',
             id: '1',
@@ -95,9 +95,14 @@ class ShopSetting extends Component {
             indexstyle_id: this.state.indexstyle,
             delivery_fee: this.state.psfFn,
             logo: 'base64'
-        }).then(res=>{console.log(res)})
+        }).then(res => { console.log(res) })
     }
-
+    deliveryFn(i) {
+        console.log('1、---这是父子传参的点' + i)
+    }
+    deliverysFn(i) {
+        console.log('2、---这是父子传参的点 2' + i)
+    }
     render() {
         return (
             <div className={style.shop_wrap}>
@@ -127,15 +132,15 @@ class ShopSetting extends Component {
                                 {
                                     this.state.weeks && this.state.weeks.map((item, i) => {
                                         return <label name='a' key={item.id}>
-                                        <Checkboxs></Checkboxs>
-                                        <span>{item.week}</span> </label>
+                                            <Checkboxs></Checkboxs>
+                                            <span>{item.week}</span> </label>
                                     })
                                 }
                             </div>
                         </li>
                         <li className={style.shop_zzdq}>
                             <span>营业时间</span>
-                            <div> <Select/> 至 <Select arr={this.state.as1} />  </div>
+                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn} arr={this.state.as1} />  </div>
                         </li>
                         <li className={style.shop_ps}>
                             <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>
