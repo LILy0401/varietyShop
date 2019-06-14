@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
 import style from './shopSetting.module.css'
-import request from '../../utiles/http'
+import {Register} from '../../services'
 import { DatePicker, List } from 'antd-mobile';
-
+import Select from '../../components/selects'
 import UploadPicture from '../../components/Uploadpicture/uploadpicture';
-
+import Checkboxs from '../../components/Checkboxs/checkbox'
 import 'antd-mobile/lib/date-picker/locale/en_US';
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
-// GMT is not currently observed in the UK. So use UTC now.
-// const utcNow = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
-
-// Make sure that in `time` mode, the maxDate and minDate are within one day.
 let minDate = new Date(nowTimeStamp - 1e7);
 const maxDate = new Date(nowTimeStamp + 1e7);
-// console.log(minDate, maxDate);
 if (minDate.getDate() !== maxDate.getDate()) {
-    // set the minDate to the 0 of maxDate
     minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
 }
 
 class ShopSetting extends Component {
     state = {
         shopName: '',
-        addPrice: '',
-        psf: '',
+        addPriceFn: '',
+        psfFn: '',
         indexstyle: '0',
         startValue: null,
         time: now,
         endValue: null,
         endOpen: false,
+        as1:['第一组','相信自己','50分钟'],
         weeks: [{
             week: '周一',
             id: '1',
@@ -70,14 +65,14 @@ class ShopSetting extends Component {
             shopName: e.target.value
         })
     }
-    addPriceFn(e) {
+    addPriceFnFn(e) {
         this.setState({
-            addPrice: e.target.value
+            addPriceFnFn: e.target.value
         })
     }
     psfFn(e) {
         this.setState({
-            psf: e.target.value
+            psfFn: e.target.value
         })
     }
     // 选择布局样式
@@ -89,27 +84,21 @@ class ShopSetting extends Component {
     componentWillMount() {
     }
     saveFn() {
-        request.post('/store/decorate', {
-            body: {
-                banner: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
-                store_id: '7fd2189e7e33562e060f58e0b88035cf',
-                store_name: this.state.shopName,
-                brand_name: this.state.shopName,
-                main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
-                contact_number: '13612344321,021-12336754',
-                business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
-                indexstyle_id: this.state.indexstyle,
-                delivery_fee: this.state.psf,
-                logo: 'base64'
-            },
-            headers: {
-                authrization: 'asdascxv123asd'
-            }
-        }).then(res => console.log(res))
+        Register({
+            banner: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+            store_id: '7fd2189e7e33562e060f58e0b88035cf',
+            store_name: this.state.shopName,
+            brand_name: this.state.shopName,
+            main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+            contact_number: '13612344321,021-12336754',
+            business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
+            indexstyle_id: this.state.indexstyle,
+            delivery_fee: this.state.psfFn,
+            logo: 'base64'
+        }).then(res=>{console.log(res)})
     }
 
     render() {
-        // const { startValue, endValue, endOpen } = this.state;
         return (
             <div className={style.shop_wrap}>
                 <div className={style.shop_header}>
@@ -125,27 +114,28 @@ class ShopSetting extends Component {
                         <img src='./1.gif' alt='加载失败' title='店铺banner'></img>
                     </div>
                     <UploadPicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
-                   
+
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
                         <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)} placeholder='请输入店铺名称'></input></li>
-                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPrice(e)} placeholder='请输入电话号'></input></li>
-                        <li><span>配 送 费</span><input type='text' onChange={(e) => this.psf(e)} placeholder='请输入配送费'></input></li>
+                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} placeholder='请输入电话号'></input></li>
+                        <li><span>配 送 费</span><input type='text' onChange={(e) => this.psfFn(e)} placeholder='请输入配送费'></input></li>
                         <li className={style.shop_check}>
                             <p>营业周期</p>
                             <div>
                                 {
                                     this.state.weeks && this.state.weeks.map((item, i) => {
-                                        return <label name='a' key={item.id}><input type='checkbox' defaultChecked={item.flag} id='a'></input><span>{item.week}</span> </label>
+                                        return <label name='a' key={item.id}>
+                                        <Checkboxs></Checkboxs>
+                                        <span>{item.week}</span> </label>
                                     })
                                 }
                             </div>
-
                         </li>
                         <li className={style.shop_zzdq}>
                             <span>营业时间</span>
-                            <div> <span>08:00 <i className='iconfont iconjiantou-copy-copy'></i></span> 至 <span>22:00 <i className='iconfont iconjiantou-copy-copy'></i></span></div>
+                            <div> <Select/> 至 <Select arr={this.state.as1} />  </div>
                         </li>
                         <li className={style.shop_ps}>
                             <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>

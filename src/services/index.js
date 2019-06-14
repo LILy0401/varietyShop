@@ -1,5 +1,42 @@
-<<<<<<< HEAD
-import request from '../utiles/http'
+// import request from '../utiles/http'
+
+import request from '../utiles/request';
+
+function Logins(params){
+    return request.post('/store/login',{
+        body:params
+    })
+}
+function Register(params){
+    return request.post('/store/decorate',{
+        body:params,
+        headers: {
+            authrization: 'asdascxv123asd'
+        }
+    })
+}
+// Logins({
+//     user_name:'test',
+//     user_pwd:'test1!'
+// }).then(res=>{
+//     console.log(res)
+// })
+
+
+export {
+    Logins,
+    Register
+}
+
+
+
+
+
+
+
+
+
+
 // request.post('/store/register',{
 //     body:{
 //         user_name:'写死',
@@ -10,15 +47,15 @@ import request from '../utiles/http'
 // .then(res=>{
 //     console.log(res);
 // })
-request.put('/store/goods/cat.add',{
-    body:{
-        cat_name:'蔬1菜',
-        store_id:'1e01685654c1cb5672e896c58f011dbfs'
-    },
-    headers:{
-        authorization:'asdfg'
-    }
-}).then(res=>console.log(res))
+// request.put('/store/goods/cat.add',{
+//     body:{
+//         cat_name:'蔬1菜',
+//         store_id:'1e01685654c1cb5672e896c58f011dbfs'
+//     },
+//     headers:{
+//         authorization:'asdfg'
+//     }
+// }).then(res=>console.log(res))
 // request.delete('/store/goods/cat.delete',{
 //     body:{
 //         cat_id:'8217c3fdb19242d7fd86f558d1872b48'
@@ -75,5 +112,3 @@ request.put('/store/goods/cat.add',{
 //         authorization:'12asdf'
 //     }
 // })
-=======
->>>>>>> 69ac1bcb483d188b23514b21bc9ab2daac23f8e3
