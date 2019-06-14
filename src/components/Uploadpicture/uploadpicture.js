@@ -11,21 +11,21 @@ class uploadpicture extends Component {
     render() {
         let {src} = this.state
         return (
-            <div className="photo">
+            <>
                 {
 
                     src&&src?<div className={this.props.type == 'big'?'photo_div_big':'photo_div'}>
                         <img src={this.state.src}></img>
                         <span className='iconfont iconshanchu2' onClick={this.delPicture}></span>
-                    </div>:null
-                }
-                 
-                <div className={this.props.type == 'big'?'photo_div_add_big':'photo_div_add'}>                
+                    </div>: <div className={this.props.type == 'big'?'photo_div_add_big':'photo_div_add'}>                
                     <span className='iconfont iconplus-add'></span>
                     <span>{this.props.title}</span>
                     <input type='file' onChange={this.getUrl.bind(this)}></input>
                 </div>
-            </div>
+                }
+            </>  
+               
+           
         );
     }
     delPicture(){
@@ -42,8 +42,8 @@ class uploadpicture extends Component {
         })
         .then(res=>res.json())
         .then((res)=>{
-            console.log(res);
             if(res.code == 1){
+                this.props.getMsg&&this.props.getMsg(res,this.props.num)
                 this.setState(()=>{
                     return {src:res.url[0].url}
                 })
