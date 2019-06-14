@@ -90,6 +90,9 @@
 .shop_bn_su>img{
     width:100%;
 }
+.shop_bn_box{
+    overflow: hidden;
+}
 .shop_bn_su>p{
     font-family: PingFangSC-Regular;
     font-size: 24px;
@@ -104,6 +107,7 @@
 .shop_bot{
     width:100%;
     height:auto;
+    z-index: 9999;
     overflow-x:hidden;
     border-top:.2rem solid #F8F8F8;
 }
@@ -128,7 +132,7 @@
 }
 .shop_bot>ul>li>input{
     width:60%;
-    height:98%;
+    height:97%;
     border:0px;
     outline: none;
 }
@@ -153,12 +157,7 @@
     padding-left:.3rem;
     line-height: .68rem;
 }
-.shop_bot>ul>li.shop_check>div input{
-    width:.4rem;
-    height:.4rem;
-    margin:0 .4rem 0 .2rem;
-    background: #5ADAD0;
-}
+
 .shop_bot>ul>li.shop_check>div{
     display: flex;
     flex-wrap:wrap; 
@@ -168,6 +167,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width:auto;
+    height:auto;
     font-size:.28rem;
     color: #999999;
     line-height: .38rem;
@@ -175,6 +176,7 @@
 }
 li.shop_check>div label>span{
     display: inline-block;
+    margin:0 .15rem;
     width: .6rem;
 }
 .shop_bot>ul>li.shop_zzdq{

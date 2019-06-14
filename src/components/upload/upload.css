@@ -1,0 +1,17 @@
+.cfp_log_wrap{
+    width:2.1rem;
+    height:2.1rem;
+    overflow: hidden;
+    border:1px dashed #ccc;
+}
+.cfp_log_wrap>input.cfp_log_filed{
+}
+.cfp_log_as{
+    width:2.1rem;
+    height:2.1rem;
+    border:1px dashed #ccc;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}

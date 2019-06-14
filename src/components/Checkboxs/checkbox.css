@@ -1,3 +1,14 @@
-.cfp_cb_sp{
-    
+.checkbox{
+    position: relative;
+}
+.checked:after{
+    content:"";
+    position: absolute;
+    left:.1rem;
+    top:.05rem;
+    width:.2rem;
+    height:.1rem;
+    border-left:2px solid #5ADAD0;
+    border-bottom:2px solid #5ADAD0;
+    transform:rotate(-45deg);
 }
