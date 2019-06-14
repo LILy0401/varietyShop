@@ -19,8 +19,7 @@ let routers = [
         name:'shopSetting',
         path:'/shopSetting',
         component:ShopSetting
-    } ,
-    {
+    },{
         name:'putaway',
         path:'/putaway',
         component:Putaway
