@@ -1,0 +1,28 @@
+.cfp_select_wrap{
+    background: #F8F8F8;
+    border-radius: .26rem;
+    display: block;
+    text-align: center;
+    line-height: .54rem;
+    width: 1.7rem;
+    height: .54rem;
+    position: relative;
+}
+.cfp_select_content{
+    position: absolute;
+    z-index: 9999;
+    top:0;
+    width:100%;
+    height:auto;
+    background: #F8F8F8;
+    border-radius: .5rem;
+    display: none;
+}
+.cfp_select_active{
+    display:block;
+}
+.cfp_select_content>li{
+    width: 1.7rem;
+    height: .54rem;
+    line-height: .54rem;
+}
