@@ -10,11 +10,11 @@ class Dialog extends Component {
     }
     // 使用dialog请前往classify.js
     render() {
-        console.log(this.props.isShow,'dialog')
+        let { type ,isShow} = this.props;
         return (
             <Animate transitionName='dia'>
-                {
-                    this.props.isShow &&
+                { 
+                    isShow && 
                     <div className='cll_dialog'>
                         <div className='cll_dialog_div'>
                             <p className='cll_title'>{this.props.title}</p>
@@ -28,7 +28,8 @@ class Dialog extends Component {
                         </div>
                     </div>
                 }
-               
+                    
+                
             </Animate>
         );
     }

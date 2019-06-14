@@ -6,19 +6,12 @@ export default class Loading extends Component {
     state={
         flag:true
     }
-    // componentDidMount(){
-    //     this.setState({
-    //         flag:this.props.flag
-    //     })
-    // }
     componentWillReceiveProps(nextProps){
-        console.log(nextProps);
         this.setState({
             flag:nextProps.flag
         })
     }
     render() {
-        
         return (
             <Animate transitionName='load'>
               { this.state.flag && <div className='loading'>
@@ -42,3 +35,4 @@ export {
     open,
     close
 };
+// 引入，调用open()或者close()即可

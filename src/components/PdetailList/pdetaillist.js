@@ -3,6 +3,7 @@ import './pdetaillist.css';
 class pdetaillist extends Component {
     render() {
         return (
+            // 商品详情里面的list
             <div className='cll_productD_con'>
                 <div className='cll_product_list'>
                     <span></span>

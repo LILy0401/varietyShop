@@ -73,11 +73,11 @@
 }
 .dia-enter-active{
     opacity: 1;
-    transform: opacity 3s ease;
+    transition: opacity 3s ease;
 }
 .dia-leave{
     opacity: 1;
-    transform: opacity 2s ease;
+    transition: opacity 2s ease;
 }
 .dia-leave-active{
     opacity:0;    

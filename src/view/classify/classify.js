@@ -42,7 +42,7 @@ class classify extends Component {
                 btn:数组，dialog的取消和确定按钮
                 change:是判断显示隐藏,以及返回信息,是个函数
              */}
-                <Dialog title='填写分类名称'change={this.change} btn={this.state.arr} isShow={this.state.isShow}>
+                <Dialog type='ss' title='填写分类名称'change={this.change} btn={this.state.arr} isShow={this.state.isShow}>
                     <input type='text' placeholder='请输入'></input>
                 </Dialog>
                 <div className={style.classfiy_box}>
@@ -56,7 +56,6 @@ class classify extends Component {
                             <span className='iconfont iconshanchu'></span>
                         </p>
                     </div>
-                   
                 </div>
                 <div className={style.classfiy_footer} onClick={this.addType.bind(this)}>
                         添加分类

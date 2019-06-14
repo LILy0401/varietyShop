@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import style from './putaway.module.css';
 import Headers from '../../components/Header/headers'
 import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
-
+import Select from '../../components/selects/index.js';
+import request from '../../utiles/http';
 class putaway extends Component {
     constructor(props){
         super(props);
@@ -69,7 +70,7 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                               
+                                <Select></Select>
                                 {/* <select value='克'>
                                     <option>克</option>
                                     <option>千克</option>
@@ -106,7 +107,6 @@ class putaway extends Component {
                                  })
                              }
                           
-                       
                         </div>
                        
                         <p className={style.com_picture}>购物车图(必填)</p>
@@ -118,7 +118,7 @@ class putaway extends Component {
                         <p className={style.com_picture}>商品详情</p>
                         <div className={style.photo}>
                             
-                                <Uploadpicture  title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
+                            <Uploadpicture  title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
                              
                         </div>
                         <div className={style.put_con}>
@@ -129,8 +129,8 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                                {/* <Selection></Selection> */}
-                               
+                                <Select></Select>
+                        
                             </div>
                             <div className={style.put_p}>
                                 <span>商品售价</span>
@@ -168,7 +168,8 @@ class putaway extends Component {
     }
    
     goClassify=()=>{
-        this.props.history.push('/classify');
+       console.log('111');
+      
     }
     putaway=()=>{
         if(this.state.goods_name&&this.state.cat&&this.state.price)
