@@ -92,6 +92,7 @@ export {
 //     console.log(res)
 // })
 // //可以获取到需要的数据
+
 // request.get('/store/statistics/profit',{
 //     query:{
 //         from:'2019-07-21',
@@ -102,6 +103,7 @@ export {
 //         authorization:'12asdf'
 //     }
 // }).then(res=>console.log(res))
+
 // request.post('',{
 //     body:{
 //         from:'2019-07-21',
