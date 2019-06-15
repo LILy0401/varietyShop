@@ -54,7 +54,9 @@ class ShopSetting extends Component {
             id: '7',
             flag: false
         }],
-        dataImg:['1']
+        dataImg:['1'],
+        wokeTime:'',
+        logUrl:''
     };
     getMsg=(data,num)=>{
         
@@ -69,6 +71,13 @@ class ShopSetting extends Component {
             })
         }
         console.log(data,'我在这里');
+    }
+    getMsg1=(data,num)=>{
+        this.setState((state)=>{
+            return {
+                logUrl:data.url[0].url
+            }
+        })
     }
     onChange = (field, value) => {
         this.setState({
@@ -100,7 +109,7 @@ class ShopSetting extends Component {
     }
     saveFn() {
         Register({
-            banner: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+            banner:this.state.dataImg,
             store_id: '7fd2189e7e33562e060f58e0b88035cf',
             store_name: this.state.shopName,
             brand_name: this.state.shopName,
@@ -109,13 +118,15 @@ class ShopSetting extends Component {
             business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
             indexstyle_id: this.state.indexstyle,
             delivery_fee: this.state.psfFn,
-            logo: 'base64'
+            logo: this.state.logUrl
         }).then(res => { console.log(res) })
     }
     deliveryFn(i) {
+       
         console.log('1、---这是父子传参的点' + i)
     }
     deliverysFn(i) {
+      
         console.log('2、---这是父子传参的点 2' + i)
     }
     render() {
@@ -128,7 +139,7 @@ class ShopSetting extends Component {
                 </div>
                 <p className={style.shop_logo}>店铺LOGO</p>
                 
-                    <UploadPicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
+                    <UploadPicture title='上传banner'  getMsg={this.getMsg1}  url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
                    
                 
                 <p className={style.shop_bn}><b>店铺banner</b><span>（1-3张）</span></p>
