@@ -3,7 +3,10 @@ import style from './putaway.module.css';
 import Headers from '../../components/Header/headers'
 import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
 import Select from '../../components/selects/index.js';
+import { open,close } from '../../components/Loading/loading';
+import { openPoP,closePop } from '../../components/Popup/popup.js';
 import request from '../../utiles/http';
+
 class putaway extends Component {
     constructor(props){
         super(props);
@@ -15,7 +18,12 @@ class putaway extends Component {
             list:['克','千克','吨']
         }
     }
-    
+    componentDidMount(){
+        open();
+        setTimeout(()=>{
+            close()
+        },1500)
+    }
     getMsg=(data,num)=>{
 
         if(this.state.dataImg.length<num){
@@ -29,6 +37,9 @@ class putaway extends Component {
             })
         }
         console.log(data)
+    }
+    getke(data){
+        console.log(data);
     }
     render() {
         return (
@@ -70,12 +81,8 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                                <Select></Select>
-                                {/* <select value='克'>
-                                    <option>克</option>
-                                    <option>千克</option>
-                                    <option>吨</option>
-                                </select> */}
+                                <Select deliveryFn={this.getke.bind(this)} arr={['克','千克','吨']}></Select>
+                                
                             </div>
                             <div className={style.put_p}>
                                 <span>商品售价</span>
@@ -129,8 +136,8 @@ class putaway extends Component {
                                 <p>
                                     <input type='text' placeholder='请输入重量'></input>
                                 </p>
-                                <Select></Select>
-                        
+                                <Select deliveryFn={this.getke.bind(this)} arr={['克','千克','吨']}></Select>
+    
                             </div>
                             <div className={style.put_p}>
                                 <span>商品售价</span>
@@ -169,7 +176,7 @@ class putaway extends Component {
    
     goClassify=()=>{
        console.log('111');
-      
+       openPoP();
     }
     putaway=()=>{
         if(this.state.goods_name&&this.state.cat&&this.state.price)

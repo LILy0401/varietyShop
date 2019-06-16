@@ -6,6 +6,7 @@ import Select from '../../components/selects'
 import UploadPicture from '../../components/Uploadpicture/uploadpicture';
 import Checkboxs from '../../components/Checkboxs/checkbox'
 import 'antd-mobile/lib/date-picker/locale/en_US';
+import { open,close } from '../../components/Loading/loading';
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 let minDate = new Date(nowTimeStamp - 1e7);
@@ -95,6 +96,12 @@ class ShopSetting extends Component {
         this.setState({
             indexstyle: e.target.value
         })
+    }
+    componentDidMount(){
+        open();
+        setTimeout(()=>{
+            close()
+        },1500)
     }
     componentWillMount() {
     }

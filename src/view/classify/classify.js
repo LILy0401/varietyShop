@@ -3,7 +3,7 @@ import style from './classify.module.css';
 import Dialog from '../../components/DialogCom/dialog';
 import request from '../../utiles/http';
 import Cookies from 'js-cookie';
-import {open,close} from '../../components/Loading/loading.js';
+
 
 class classify extends Component {
     constructor(props){
@@ -27,12 +27,7 @@ class classify extends Component {
             console.log(res);
         })
     }
-    save=()=>{
-        open();
-        setTimeout(()=>{
-            close();
-        },2000)
-    }
+
     render() {
         return (
             <div className={style.classfiy}>
@@ -52,7 +47,7 @@ class classify extends Component {
                             <span>添加时间：2018-06-21</span>
                         </p>
                         <p className={style.classfiy_p_t}>
-                            <span className='iconfont iconicon_compile' onClick={this.save}></span>
+                            <span className='iconfont iconicon_compile'></span>
                             <span className='iconfont iconshanchu'></span>
                         </p>
                     </div>
