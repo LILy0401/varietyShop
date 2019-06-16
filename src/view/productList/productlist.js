@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import style from './productlist.module.css';
 import Acommodity from '../../components/Acommodity/acommodity';
 import {Checkbox} from 'antd-mobile';
+import Entry from '../../components/entry.js'
 import Headers from '../../components/Header/headers';
 class productlist extends Component {
     render() {
@@ -13,6 +14,11 @@ class productlist extends Component {
                         <input type='text' placeholder='请输入商品名称'></input>
                     </div>
                     <Acommodity type='yes'></Acommodity>
+                </div>
+                <div>
+                <Entry></Entry>
+                我要在这里做一个上传
+                仅此而已
                 </div>
                 <div className={style.product_footer}>
                     <p className={style.allChecked}>
