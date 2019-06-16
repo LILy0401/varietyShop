@@ -23,9 +23,7 @@ class uploadpicture extends Component {
                     <input type='file' onChange={this.getUrl.bind(this)}></input>
                 </div>
                 }
-            </>  
-               
-           
+            </> 
         );
     }
     delPicture(){
@@ -50,7 +48,6 @@ class uploadpicture extends Component {
             }
         })
     }
-
 }
 
 export default uploadpicture;

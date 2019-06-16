@@ -2,7 +2,7 @@
  * @Author: 楚凤沛 
  * @Date: 2019-06-13 10:54:29 
  * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2019-06-14 20:57:04
+ * @Last Modified time: 2019-06-16 20:27:17
  */
 
  import './checkbox.css'
@@ -25,13 +25,12 @@ export default class Checkboxs extends Component{
         }
     }
     checked(){
-        
         this.setState((state)=>{
             return {
                 clas:state.clas === 'checkbox'?'checkbox checked':'checkbox'
             }
         },()=>{
-            console.log(this.state.clas)
+            this.props.checkboxFN()
         })
     }
     render(){
