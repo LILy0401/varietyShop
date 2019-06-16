@@ -1,5 +1,5 @@
 // import request from '../utiles/http'
-
+import Cookies from 'js-cookie';
 import request from '../utiles/request';
 
 function Logins(params){
@@ -8,10 +8,11 @@ function Logins(params){
     })
 }
 function Register(params){
+    console.log(Cookies.get('token'))
     return request.post('/store/decorate',{
         body:params,
         headers: {
-            authrization: 'asdascxv123asd'
+            authrization: Cookies.get('token')
         }
     })
 }

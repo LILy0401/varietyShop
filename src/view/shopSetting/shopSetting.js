@@ -25,6 +25,7 @@ class ShopSetting extends Component {
         endValue: null,
         endOpen: false,
         as1: ['第一组', '相信自己', '50分钟'],
+        business_time:'',
         weeks: [{
             week: '周一',
             id: '1',
@@ -105,9 +106,23 @@ class ShopSetting extends Component {
             indexstyle: e.target.value
         })
     }
+    deliveryFn=(i)=>{
+        this.setState({
+            business_time : this.state.business_time +','+i
+        })
+     }
+     deliverysFn=(i)=> {
+        this.setState({
+            business_time : this.state.business_time +','+i
+       })
+    }
+    checkboxFN=(i)=>{
+        console.log(i)
+    }
     componentWillMount() {
     }
     saveFn() {
+        console.log(this.state.business_time)
         Register({
             banner:this.state.dataImg,
             store_id: '7fd2189e7e33562e060f58e0b88035cf',
@@ -115,20 +130,14 @@ class ShopSetting extends Component {
             brand_name: this.state.shopName,
             main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
             contact_number: '13612344321,021-12336754',
-            business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
+            business_time: this.state.business_time,
             indexstyle_id: this.state.indexstyle,
             delivery_fee: this.state.psfFn,
             logo: this.state.logUrl
         }).then(res => { console.log(res) })
     }
-    deliveryFn(i) {
-       
-        console.log('1、---这是父子传参的点' + i)
-    }
-    deliverysFn(i) {
-      
-        console.log('2、---这是父子传参的点 2' + i)
-    }
+   
+ 
     render() {
         return (
             <div className={style.shop_wrap}>
@@ -158,7 +167,7 @@ class ShopSetting extends Component {
                 <div className={style.shop_bot}>
                     <ul>
                         <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)} placeholder='请输入店铺名称'></input></li>
-                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} placeholder='请输入电话号'></input></li>
+                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} placeholder='请输入起送价格'></input></li>
                         <li><span>配 送 费</span><input type='text' onChange={(e) => this.psfFn(e)} placeholder='请输入配送费'></input></li>
                         <li className={style.shop_check}>
                             <p>营业周期</p>
@@ -166,7 +175,7 @@ class ShopSetting extends Component {
                                 {
                                     this.state.weeks && this.state.weeks.map((item, i) => {
                                         return <label name='a' key={item.id}>
-                                            <Checkboxs></Checkboxs>
+                                            <Checkboxs checkboxFN={this.checkboxFN.bind(this,item.week)}></Checkboxs>
                                             <span>{item.week}</span> </label>
                                     })
                                 }
@@ -174,10 +183,10 @@ class ShopSetting extends Component {
                         </li>
                         <li className={style.shop_zzdq}>
                             <span>营业时间</span>
-                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn} arr={this.state.as1} />  </div>
+                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn}/>  </div>
                         </li>
                         <li className={style.shop_ps}>
-                            <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>
+                            <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0}}>
                                 <DatePicker
                                     mode="time"
                                     minuteStep={2}
