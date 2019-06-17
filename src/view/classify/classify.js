@@ -13,7 +13,6 @@ class classify extends Component {
             isShow:false,
             cat_name:'',
             data:[]
-        
         }
     }
     componentWillMount(){
@@ -30,7 +29,7 @@ class classify extends Component {
             }
         })
         .then(res=>{
-            console.log(res.result)
+            // console.log(res.result)
             this.setState({
                 data:res.result
             })

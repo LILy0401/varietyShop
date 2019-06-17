@@ -2,7 +2,7 @@
 import 'isomorphic-fetch'
 class Query{
     constructor(options={headers:{}}){
-        console.log(options)
+        // console.log(options)
         let defaults = {
             baseUrl:'',
             headers:{
@@ -14,10 +14,6 @@ class Query{
             ...options,
             headers:Object.assign({},defaults.headers,options.headers),
         }
-        // this.headers = {
-        //     ...defaults.headers,
-        //     ...options.headers
-        // }
     }
     setConfig(url,options,method){
         if(method === 'get' && options.query){
@@ -27,12 +23,7 @@ class Query{
                 usp.append(item[0],item[1])
             })
             url=url+'?'+usp.toString();
-            // console.log(usp.toString())
         }
-        // if(method='post' && options.body){
-
-        // }
-        // console.log(options)
         let {config} = this;
             // let headers = {...config.headers,...options.headers};
             let headers = config.headers;
