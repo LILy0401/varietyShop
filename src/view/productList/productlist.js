@@ -4,22 +4,31 @@ import Acommodity from '../../components/Acommodity/acommodity';
 import {Checkbox} from 'antd-mobile';
 import Headers from '../../components/Header/headers';
 import Cookie from 'js-cookie';
+import request from '../../utiles/http';
 class productlist extends Component {
+    state={
+        data:[]
+    }
     componentDidMount(){
 
-        fetch('/store/goods/list',{
-            method:'POST',
+        request.post('/store/goods/list',{
             headers:{
                 'authorization':Cookie.get('token')
             },
-            body:JSON.stringify({
-                'store_id':'1e01685654c1cb5672e896c58f011dbf'
-
-            })
-        }).then((res)=>res.json())
-        .then(res=>{
-            console.log(res);
+            body:{
+                store_id:'7fd2189e7e33562e060f58e0b88035cf'
+            }
         })
+        .then(res=>{
+            if(res.code === 1){
+                this.setState({
+                    data:res.result
+                })
+            }
+        })
+    }
+    getEle=(ele)=>{
+        this.props.history.push({pathname:'/productDetail',query:{ele:ele}})
     }
     render() {
         return (
@@ -29,7 +38,7 @@ class productlist extends Component {
                     <div className={style.product_inp}>
                         <input type='text' placeholder='请输入商品名称'></input>
                     </div>
-                    <Acommodity type='yes'></Acommodity>
+                    <Acommodity getEle={this.getEle} data={this.state.data} type='yes'></Acommodity>
                 </div>
                 <div className={style.product_footer}>
                     <p className={style.allChecked}>

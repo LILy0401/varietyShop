@@ -18,12 +18,17 @@ class putaway extends Component {
             cat_id:'',
             dataImg:['1'],
             pro_image:'',
+            weight:'2',
+            gram:'克',
+            code_bar:'',
+            image:'',
             list:['克','千克','吨']
         }
     }
     componentDidMount(){
-        if(this.props.location.query){
-            let {cat_name,cat_id } = this.props.location.query;
+
+        if(this.props.history.location.query){
+            let {cat_name,cat_id } =this.props.history.location.query;
           
             this.setState({
                 cat:cat_name,
@@ -32,11 +37,16 @@ class putaway extends Component {
            
         }
        
-       
         open();
         setTimeout(()=>{
             close()
         },1500)
+    }
+    getMsgDetail=(data)=>{
+        this.setState({
+            image:data.url[0].url
+        })
+
     }
     getMsg=(data,num)=>{
 
@@ -55,8 +65,11 @@ class putaway extends Component {
             pro_image:data.url[0].url
         })
     }
-    getke(data){
-        console.log(data);
+    getke(gram){
+        this.setState({
+            gram:gram
+        })
+    
     }
     render() {
         return (
@@ -69,7 +82,7 @@ class putaway extends Component {
                             <div className={style.put_p}>
                                 <span>商品名称</span>
                                 <p>
-                                    <input type='text' value={this.goods_name} onChange={(e)=>{
+                                    <input type='text' value={this.state.goods_name} onChange={(e)=>{
                                     
                                        this.setState({
                                             goods_name:e.target.value
@@ -96,7 +109,11 @@ class putaway extends Component {
                             <div className={style.put_p_t_power}>
                                 <span>重量</span>
                                 <p>
-                                    <input type='text' placeholder='请输入重量'></input>
+                                    <input type='text' onChange={(e)=>{
+                                        this.setState({
+                                            weight:e.target.value
+                                        })
+                                    }}  placeholder='请输入重量'></input>
                                 </p>
                                 <Select deliveryFn={this.getke.bind(this)} arr={['克','千克','吨']}></Select>
                                 
@@ -115,7 +132,11 @@ class putaway extends Component {
                             <div className={style.put_p}>
                                 <span>商品条码</span>
                                 <p>
-                                    <input type='text' placeholder='请输入商品条码（选填）'></input>
+                                    <input type='text' onChange={(e)=>{
+                                        this.setState({
+                                            code_bar:e.target.value
+                                        })
+                                    }} placeholder='请输入商品条码（选填）'></input>
                                 </p>
                             </div>
                         </div>
@@ -142,7 +163,7 @@ class putaway extends Component {
                         <p className={style.com_picture}>商品详情</p>
                         <div className={style.photo}>
                             
-                            <Uploadpicture  title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
+                            <Uploadpicture  title='上传图片' getMsg={this.getMsgDetail} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
                              
                         </div>
                         <div className={style.put_con}>
@@ -166,7 +187,11 @@ class putaway extends Component {
                             <div className={style.put_p}>
                                 <span>商品条码</span>
                                 <p>
-                                    <input type='text' placeholder='请输入商品条码（选填）'></input>
+                                    <input type='text' onChange={(e)=>{
+                                        this.setState({
+                                            code_bar:e.target.value
+                                        })
+                                    }} placeholder='请输入商品条码（选填）'></input>
                                 </p>
                             </div>
                             <p className={style.com_picture}>购物车图(必填)</p>
@@ -190,7 +215,12 @@ class putaway extends Component {
         );
         
     }
-   
+    getke(arr){
+        //克
+        this.setState({
+            gram:arr
+        })
+    }
     goClassify=()=>{
        openPoP(['添加分类'],(arr)=>{  
            if(arr === '添加分类'){
@@ -204,8 +234,7 @@ class putaway extends Component {
     putaway=()=>{
        
         let tokens = Cookies.get('token');
-        console.log(tokens);
-        if(this.state.goods_name&&this.state.cat&&this.state.price &&this.state.pro_image){
+        if(this.state.goods_name&&this.state.cat&&this.state.price &&this.state.pro_image&&this.state.image){
             fetch('/store/goods/create',{
                 headers:{
                     'authorization':tokens,
@@ -213,11 +242,14 @@ class putaway extends Component {
                 },
                 method:'POST',
                 body:JSON.stringify({
+                    weight:this.state.weight+this.state.getke,
                     store_id:'7fd2189e7e33562e060f58e0b88035cf',
                     goods_name:this.state.goods_name, //名称
                     cat:this.state.cat, //分类
                     price:this.state.price, //价格
-                    image:"22222.url", 
+                    image:this.state.image, 
+                    market_price:'100',
+                    code_bar:this.state.code_bar,
                     detail:'又名波斯菜、赤根菜、鹦鹉菜等，属藜科菠菜属，一年生草本植物。植物高可达1米，根圆锥状，带红色，较少为白色，叶戟形至卵形，鲜绿色，全缘或',
                     cat_id:this.state.cat_id,
                     cart_image:this.state.pro_image, //购物车图
@@ -227,6 +259,11 @@ class putaway extends Component {
             .then((res)=>res.json())
             .then(res=>{
                 console.log(res);
+                if(res.code === 1){
+                    setTimeout(()=>{
+                        this.props.history.push('/productList')
+                    },1000)
+                }
             })
 
         }else{

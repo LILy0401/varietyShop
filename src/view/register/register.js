@@ -65,7 +65,7 @@ class register extends Component {
             })
             .then(res=>{
                 console.log(res);
-                if(res.code == 1){
+                if(res.code === 1){
                     alert('注册成功')
                     setTimeout(()=>{
                         this.props.history.push('/home');
