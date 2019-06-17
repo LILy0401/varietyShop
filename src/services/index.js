@@ -17,10 +17,14 @@ function Register(params){
         }
     })
 }
-
+function CreateShop(params){
+    return request.post('/store/create',{
+        body:params
+    })
+}
 
 export {
-    
+    CreateShop,
     Register
 }
 
