@@ -2,7 +2,7 @@
 import 'isomorphic-fetch'
 class Query{
     constructor(options={headers:{}}){
-        console.log(options)
+        
         let defaults = {
             baseUrl:'',
             headers:{
@@ -69,7 +69,7 @@ class Query{
             if(options.body){
                 o.body = JSON.stringify(options.body)//在接口中自己进行转化
             }
-            console.log(o)
+            
             fetch(url,o)
             .then(res=>res.json())
             .then(res=>{

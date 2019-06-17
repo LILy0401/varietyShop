@@ -20,13 +20,14 @@ function setRouters(routerconfig){
                 }}></Route>
             }
       
-        return <Route path={item.path} component={item.component} key={item.name}></Route>
+        return <Route path={item.path} render={({history})=>{
+            return <item.component history={history}></item.component>
+        }} key={item.name}></Route>
 
         
     })
 }
 let ROUTER = (({history,app})=>{
-   
     return  <Router history={history}>
                 <Switch>
                     {setRouters(routerconfig)}
