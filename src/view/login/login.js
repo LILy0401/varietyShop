@@ -49,9 +49,9 @@ class login extends Component {
                 }
 
             }).then(res=>{
-                
+               
                 if(res.code === 1){
-                    Cookies.set('token',res.token)
+                     Cookies.set('token',res.token)
                     this.props.history.push('/home');
                 }else{
                     alert(res.msg);

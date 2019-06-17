@@ -4,9 +4,9 @@ import Headers from '../../components/Header/headers'
 import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
 import Select from '../../components/selects/index.js';
 import { open,close } from '../../components/Loading/loading';
-import { openPoP,closePop } from '../../components/Popup/popup.js';
+import { openPoP } from '../../components/Popup/popup.js';
 import Cookies from 'js-cookie';
-import request from '../../utiles/http';
+
 
 class putaway extends Component {
     constructor(props){

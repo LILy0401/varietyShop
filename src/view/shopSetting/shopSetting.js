@@ -6,7 +6,8 @@ import Select from '../../components/selects'
 import UploadPicture from '../../components/Uploadpicture/uploadpicture';
 import Checkboxs from '../../components/Checkboxs/checkbox'
 import 'antd-mobile/lib/date-picker/locale/en_US';
-import { open,close } from '../../components/Loading/loading';
+// import { open,close } from '../../components/Loading/loading';
+import Cookies from 'js-cookie'
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 let minDate = new Date(nowTimeStamp - 1e7);
@@ -24,7 +25,8 @@ class ShopSetting extends Component {
         time: now,
         endValue: null,
         endOpen: false,
-        as1: ['第一组', '相信自己', '50分钟'],
+        as1: ['第一组', '123', 'asd'],
+        business_time: '',
         weeks: [{
             week: '周一',
             id: '1',
@@ -54,21 +56,31 @@ class ShopSetting extends Component {
             id: '7',
             flag: false
         }],
-        dataImg:['1']
+        dataImg: ['1'],
+        wokeTime: '',
+        imgD:'',
+        logUrl: ''
     };
-    getMsg=(data,num)=>{
-        
-        if(this.state.dataImg.length<num){
-            this.setState((state)=>{
-           
+    getMsg = (data, num) => {
+        console.log(data, num)
+        if (this.state.dataImg.length < num) {
+            this.setState((state) => {
                 let arr = [...state.dataImg]
-                arr.length<3 && arr.push('1')
+                arr.length < 3 && arr.push('1')
                 return {
-                    dataImg:arr
+                    dataImg: arr,
+                    logUrl:data.url[0].url
                 }
             })
         }
-        console.log(data,'我在这里');
+       
+    }
+    getMsg1 = (data, num) => {
+        this.setState((state) => {
+            return {
+                logUrl: data.url[0].url
+            }
+        })
     }
     onChange = (field, value) => {
         this.setState({
@@ -96,33 +108,35 @@ class ShopSetting extends Component {
             indexstyle: e.target.value
         })
     }
-    componentDidMount(){
-        open();
-        setTimeout(()=>{
-            close()
-        },1500)
+    deliveryFn = (i) => {
+        this.setState({
+            business_time: this.state.business_time + ',' + i
+        })
+    }
+    deliverysFn = (i) => {
+        this.setState({
+            business_time: this.state.business_time + ',' + i
+        })
+    }
+    checkboxFN = (i) => {
+        console.log(i)
     }
     componentWillMount() {
     }
     saveFn() {
         Register({
-            banner: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC,1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
+            banner:this.state.dataImg,
             store_id: '7fd2189e7e33562e060f58e0b88035cf',
+            // store_id: '1e01685654c1cb5672e896c58f011dbf',
             store_name: this.state.shopName,
             brand_name: this.state.shopName,
             main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
             contact_number: '13612344321,021-12336754',
-            business_time: '周一-周五 09:00-20:00,周六-周日 10:00-22:00',
+            business_time: this.state.business_time,
             indexstyle_id: this.state.indexstyle,
             delivery_fee: this.state.psfFn,
-            logo: 'base64'
+            logo: this.state.logUrl
         }).then(res => { console.log(res) })
-    }
-    deliveryFn(i) {
-        console.log('1、---这是父子传参的点' + i)
-    }
-    deliverysFn(i) {
-        console.log('2、---这是父子传参的点 2' + i)
     }
     render() {
         return (
@@ -133,10 +147,7 @@ class ShopSetting extends Component {
                     <span></span>
                 </div>
                 <p className={style.shop_logo}>店铺LOGO</p>
-                
-                    <UploadPicture title='上传banner' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
-                   
-                
+                <UploadPicture title='上传banner' getMsg={this.getMsg1} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
                 <p className={style.shop_bn}><b>店铺banner</b><span>（1-3张）</span></p>
                 <div className={style.shop_bn_box}>
                     <div className={style.shop_bn_su}>
@@ -144,16 +155,16 @@ class ShopSetting extends Component {
                     </div>
                     <div className="photo">
                         {
-                            this.state.dataImg.map((ele,index)=>{
-                                return  <UploadPicture key={index} num='3' getMsg={this.getMsg} title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
+                            this.state.dataImg.map((ele, index) => {
+                                return <UploadPicture key={index} num='3' getMsg={this.getMsg} title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
                             })
                         }
-                   </div>
+                    </div>
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
                         <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)} placeholder='请输入店铺名称'></input></li>
-                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} placeholder='请输入电话号'></input></li>
+                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} placeholder='请输入起送价格'></input></li>
                         <li><span>配 送 费</span><input type='text' onChange={(e) => this.psfFn(e)} placeholder='请输入配送费'></input></li>
                         <li className={style.shop_check}>
                             <p>营业周期</p>
@@ -161,7 +172,7 @@ class ShopSetting extends Component {
                                 {
                                     this.state.weeks && this.state.weeks.map((item, i) => {
                                         return <label name='a' key={item.id}>
-                                            <Checkboxs></Checkboxs>
+                                            <Checkboxs checkboxFN={this.checkboxFN.bind(this, item.week)}></Checkboxs>
                                             <span>{item.week}</span> </label>
                                     })
                                 }
@@ -169,7 +180,7 @@ class ShopSetting extends Component {
                         </li>
                         <li className={style.shop_zzdq}>
                             <span>营业时间</span>
-                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn} arr={this.state.as1} />  </div>
+                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn} />  </div>
                         </li>
                         <li className={style.shop_ps}>
                             <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>
