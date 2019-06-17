@@ -6,7 +6,8 @@ import Select from '../../components/selects'
 import UploadPicture from '../../components/Uploadpicture/uploadpicture';
 import Checkboxs from '../../components/Checkboxs/checkbox'
 import 'antd-mobile/lib/date-picker/locale/en_US';
-import { open,close } from '../../components/Loading/loading';
+// import { open,close } from '../../components/Loading/loading';
+import Cookies from 'js-cookie'
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 let minDate = new Date(nowTimeStamp - 1e7);
@@ -25,8 +26,8 @@ class ShopSetting extends Component {
         time: now,
         endValue: null,
         endOpen: false,
-        as1: ['第一组', '相信自己', '50分钟'],
-        business_time:'',
+        as1: ['第一组', '123', 'asd'],
+        business_time: '',
         weeks: [{
             week: '周一',
             id: '1',
@@ -56,28 +57,29 @@ class ShopSetting extends Component {
             id: '7',
             flag: false
         }],
-        dataImg:['1'],
-        wokeTime:'',
-        logUrl:''
+        dataImg: ['1'],
+        wokeTime: '',
+        imgD:'',
+        logUrl: ''
     };
-    getMsg=(data,num)=>{
-        
-        if(this.state.dataImg.length<num){
-            this.setState((state)=>{
-           
+    getMsg = (data, num) => {
+        console.log(data, num)
+        if (this.state.dataImg.length < num) {
+            this.setState((state) => {
                 let arr = [...state.dataImg]
-                arr.length<3 && arr.push('1')
+                arr.length < 3 && arr.push('1')
                 return {
-                    dataImg:arr
+                    dataImg: arr,
+                    logUrl:data.url[0].url
                 }
             })
         }
-        console.log(data,'我在这里');
+       
     }
-    getMsg1=(data,num)=>{
-        this.setState((state)=>{
+    getMsg1 = (data, num) => {
+        this.setState((state) => {
             return {
-                logUrl:data.url[0].url
+                logUrl: data.url[0].url
             }
         })
     }
@@ -107,26 +109,26 @@ class ShopSetting extends Component {
             indexstyle: e.target.value
         })
     }
-    deliveryFn=(i)=>{
+    deliveryFn = (i) => {
         this.setState({
-            business_time : this.state.business_time +','+i
+            business_time: this.state.business_time + ',' + i
         })
-     }
-     deliverysFn=(i)=> {
-        this.setState({
-            business_time : this.state.business_time +','+i
-       })
     }
-    checkboxFN=(i)=>{
+    deliverysFn = (i) => {
+        this.setState({
+            business_time: this.state.business_time + ',' + i
+        })
+    }
+    checkboxFN = (i) => {
         console.log(i)
     }
     componentWillMount() {
     }
     saveFn() {
-        console.log(this.state.business_time)
         Register({
             banner:this.state.dataImg,
             store_id: '7fd2189e7e33562e060f58e0b88035cf',
+            // store_id: '1e01685654c1cb5672e896c58f011dbf',
             store_name: this.state.shopName,
             brand_name: this.state.shopName,
             main_image: '1T8Pp00AT7eo9NoAJkMR3AAAACMAAQEC',
@@ -137,8 +139,6 @@ class ShopSetting extends Component {
             logo: this.state.logUrl
         }).then(res => { console.log(res) })
     }
-   
- 
     render() {
         return (
             <div className={style.shop_wrap}>
@@ -148,10 +148,7 @@ class ShopSetting extends Component {
                     <span></span>
                 </div>
                 <p className={style.shop_logo}>店铺LOGO</p>
-                
-                    <UploadPicture title='上传banner'  getMsg={this.getMsg1}  url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
-                   
-                
+                <UploadPicture title='上传banner' getMsg={this.getMsg1} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></UploadPicture>
                 <p className={style.shop_bn}><b>店铺banner</b><span>（1-3张）</span></p>
                 <div className={style.shop_bn_box}>
                     <div className={style.shop_bn_su}>
@@ -159,11 +156,11 @@ class ShopSetting extends Component {
                     </div>
                     <div className="photo">
                         {
-                            this.state.dataImg.map((ele,index)=>{
-                                return  <UploadPicture key={index} num='3' getMsg={this.getMsg} title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
+                            this.state.dataImg.map((ele, index) => {
+                                return <UploadPicture key={index} num='3' getMsg={this.getMsg} title='上传logo' url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></UploadPicture>
                             })
                         }
-                   </div>
+                    </div>
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
@@ -176,7 +173,7 @@ class ShopSetting extends Component {
                                 {
                                     this.state.weeks && this.state.weeks.map((item, i) => {
                                         return <label name='a' key={item.id}>
-                                            <Checkboxs checkboxFN={this.checkboxFN.bind(this,item.week)}></Checkboxs>
+                                            <Checkboxs checkboxFN={this.checkboxFN.bind(this, item.week)}></Checkboxs>
                                             <span>{item.week}</span> </label>
                                     })
                                 }
@@ -184,10 +181,10 @@ class ShopSetting extends Component {
                         </li>
                         <li className={style.shop_zzdq}>
                             <span>营业时间</span>
-                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn}/>  </div>
+                            <div> <Select deliveryFn={this.deliveryFn} /> 至 <Select deliveryFn={this.deliverysFn} />  </div>
                         </li>
                         <li className={style.shop_ps}>
-                            <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0}}>
+                            <List className="date-picker-list" style={{ backgroundColor: 'white', fontSize: '.28rem', marginLeft: 0 }}>
                                 <DatePicker
                                     mode="time"
                                     minuteStep={2}

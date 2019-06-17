@@ -27,7 +27,9 @@ class classify extends Component {
             console.log(res);
         })
     }
-
+    aFn(e){
+        console.log(e)
+    }
     render() {
         return (
             <div className={style.classfiy}>
@@ -64,7 +66,6 @@ class classify extends Component {
         })
     }
     change=(isShow,msg)=>{
-        console.log(msg)
         this.setState({
             isShow:isShow
         })

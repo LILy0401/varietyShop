@@ -12,16 +12,11 @@ function Register(params){
     return request.post('/store/decorate',{
         body:params,
         headers: {
-            authrization: Cookies.get('token')
+            'content-type':'application/json',
+            'authorization': Cookies.get('token')
         }
     })
 }
-// Logins({
-//     user_name:'test',
-//     user_pwd:'test1!'
-// }).then(res=>{
-//     console.log(res)
-// })
 
 
 export {
