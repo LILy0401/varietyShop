@@ -3,7 +3,24 @@ import style from './productlist.module.css';
 import Acommodity from '../../components/Acommodity/acommodity';
 import {Checkbox} from 'antd-mobile';
 import Headers from '../../components/Header/headers';
+import Cookie from 'js-cookie';
 class productlist extends Component {
+    componentDidMount(){
+
+        fetch('/store/goods/list',{
+            method:'POST',
+            headers:{
+                'authorization':Cookie.get('token')
+            },
+            body:JSON.stringify({
+                'store_id':'1e01685654c1cb5672e896c58f011dbf'
+
+            })
+        }).then((res)=>res.json())
+        .then(res=>{
+            console.log(res);
+        })
+    }
     render() {
         return (
             <div className={style.productlist}>

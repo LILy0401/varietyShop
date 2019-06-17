@@ -24,7 +24,7 @@ function Register(params){
 
 
 export {
-    Logins,
+    
     Register
 }
 

@@ -14,7 +14,6 @@ const maxDate = new Date(nowTimeStamp + 1e7);
 if (minDate.getDate() !== maxDate.getDate()) {
     minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
 }
-
 class ShopSetting extends Component {
     state = {
         shopName: '',

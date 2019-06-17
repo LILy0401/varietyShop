@@ -5,6 +5,7 @@ import Uploadpicture from '../../components/Uploadpicture/uploadpicture';
 import Select from '../../components/selects/index.js';
 import { open,close } from '../../components/Loading/loading';
 import { openPoP,closePop } from '../../components/Popup/popup.js';
+import Cookies from 'js-cookie';
 import request from '../../utiles/http';
 
 class putaway extends Component {
@@ -14,11 +15,24 @@ class putaway extends Component {
             goods_name:'',
             cat:'',
             price:'',
+            cat_id:'',
             dataImg:['1'],
+            pro_image:'',
             list:['克','千克','吨']
         }
     }
     componentDidMount(){
+        if(this.props.location.query){
+            let {cat_name,cat_id } = this.props.location.query;
+          
+            this.setState({
+                cat:cat_name,
+                cat_id:cat_id
+            })
+           
+        }
+       
+       
         open();
         setTimeout(()=>{
             close()
@@ -36,7 +50,10 @@ class putaway extends Component {
                 }
             })
         }
-        console.log(data)
+    
+        this.setState({
+            pro_image:data.url[0].url
+        })
     }
     getke(data){
         console.log(data);
@@ -64,7 +81,7 @@ class putaway extends Component {
                             <div className={style.put_p_t} onClick={this.goClassify}>
                                 <span>选择分类</span>
                                 <p>
-                                    <input type='text' onChange={(e)=>{
+                                    <input type='text' value={this.state.cat} onChange={(e)=>{
                                         this.setState({
                                             cat:e.target.value
                                         })
@@ -115,7 +132,7 @@ class putaway extends Component {
                              }
                           
                         </div>
-                       
+                    
                         <p className={style.com_picture}>购物车图(必填)</p>
                         <div className={style.photo}>
                            
@@ -175,27 +192,46 @@ class putaway extends Component {
     }
    
     goClassify=()=>{
-       console.log('111');
-       openPoP();
+       openPoP(['添加分类'],(arr)=>{  
+           if(arr === '添加分类'){
+               setTimeout(()=>{
+                    this.props.history.push('/classify')
+               },1000)
+              
+           }
+       });
     }
     putaway=()=>{
-        if(this.state.goods_name&&this.state.cat&&this.state.price)
-        fetch('/store/goods/create',{
-            method:'POST',
-            header:{
-                authorization:'asddf'
-            },
-            store_id:'7fd2189e7e33562e060f58e0b88035cf',
-            goods_name:this.state.goods_name,
-            cat:this.state.cat,
-            price:this.state.price,
-            image:'',
-            detail:''
-        })
-        .then((res)=>res.json())
-        .then(res=>{
-            console.log(res);
-        })
+       
+        let tokens = Cookies.get('token');
+        console.log(tokens);
+        if(this.state.goods_name&&this.state.cat&&this.state.price &&this.state.pro_image){
+            fetch('/store/goods/create',{
+                headers:{
+                    'authorization':tokens,
+                    'content-type':'application/json'
+                },
+                method:'POST',
+                body:JSON.stringify({
+                    store_id:'7fd2189e7e33562e060f58e0b88035cf',
+                    goods_name:this.state.goods_name, //名称
+                    cat:this.state.cat, //分类
+                    price:this.state.price, //价格
+                    image:"22222.url", 
+                    detail:'又名波斯菜、赤根菜、鹦鹉菜等，属藜科菠菜属，一年生草本植物。植物高可达1米，根圆锥状，带红色，较少为白色，叶戟形至卵形，鲜绿色，全缘或',
+                    cat_id:this.state.cat_id,
+                    cart_image:this.state.pro_image, //购物车图
+                    cost_price:'12', //成本价
+                })
+            })
+            .then((res)=>res.json())
+            .then(res=>{
+                console.log(res);
+            })
+
+        }else{
+            alert('部分信息没有录入');
+        }
     }
 }
 

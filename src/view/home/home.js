@@ -84,7 +84,12 @@ class home extends Component {
                             </dt>
                             <dd>收益报表</dd>
                         </dl>
-                       
+                        <dl className={style.list_dl} onClick={this.createStore.bind(this)}>
+                            <dt>
+                                <span className='iconfont iconpaomeiyanbiaoqing'></span>
+                            </dt>
+                            <dd>创建店铺</dd>
+                        </dl>
                     </div>
                 </div>
             </div>
@@ -92,6 +97,9 @@ class home extends Component {
     }
     goputaway(){
         this.props.history.push('/putaway');
+    }
+    createStore(){
+        this.props.history.push('/createStore');
     }
     goclassify(){
        

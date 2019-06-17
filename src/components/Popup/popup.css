@@ -11,3 +11,47 @@
     justify-content: center;
     align-items: center;
 }
+.pop_div{
+    width: 90%;
+    height: auto;
+    position: absolute;
+    bottom: 1rem;
+    border-radius: .1rem;
+    overflow: hidden;
+}
+.pop_div>p{
+    width: 100%;
+    height: .68rem;
+    color: black;
+    background: #fff;
+    text-align: center;
+    line-height: .68rem;
+    font-size: .3rem;
+    border-bottom: 1px solid #eee;
+}   
+.popup>p:last-child{
+    width: 90%;
+    height: .7rem;
+    color: black;
+    background: #fff;
+    text-align: center;
+    line-height: .7rem;
+    border-radius: .1rem;
+    position: absolute;
+    bottom: .1rem;
+    font-size: .32rem;
+}
+.popup-enter{
+    opacity: 0;
+}
+.popup-enter-active{
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+.popup-leave{
+    opacity: 1;
+}
+.popup-leave-active{
+    opacity:0;  
+    transition: opacity 1s ease;  
+}

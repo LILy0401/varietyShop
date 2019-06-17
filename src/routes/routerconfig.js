@@ -6,6 +6,8 @@ import Home from '../view/home/home';
 import ShopSetting from '../view/shopSetting/shopSetting'
 import Login from '../view/login/login';
 import Register from '../view/register/register';
+import CreateStore from '../view/createStore/createstore';
+
 let routers = [
     {
         path:"/",
@@ -44,6 +46,10 @@ let routers = [
         name:'register',
         path:'/register',
         component:Register
+    },{
+        name:'createStore',
+        path:'/createStore',
+        component:CreateStore
     }
 ]
 export default routers;
