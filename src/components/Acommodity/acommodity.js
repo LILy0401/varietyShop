@@ -3,6 +3,7 @@ import style from './acommodity.module.css';
 class acommodity extends Component {
  
     render() {
+        console.log(this.props)
         return (
             <>
                 {
@@ -37,6 +38,7 @@ class acommodity extends Component {
         
     }
     getDetail(e,ele){
+        console.log(ele)
         this.props.getEle(ele);
     }
 }

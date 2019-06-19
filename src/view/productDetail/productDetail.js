@@ -37,7 +37,8 @@ class productDetail extends Component {
         }
     }
     render() {
-       let state =  this.props.history.location.query.ele;
+        if(this.props.history.location.query){
+            let state = this.props.history.location.query.ele;
         return (
             <div className='cll_productDetail'>
                 <Headers title="商品详情"></Headers>
@@ -131,6 +132,12 @@ class productDetail extends Component {
                 
             </div>
         );
+       }else{
+           return (
+               <h1>数据走失了</h1>
+           )
+       }
+   
     }
 }
 

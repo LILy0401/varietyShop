@@ -11,7 +11,6 @@ class productlist extends Component {
         data:[]
     }
     componentDidMount(){
-
         request.post('/store/goods/list',{
             headers:{
                 'authorization':Cookie.get('token')
