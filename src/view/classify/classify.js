@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './classify.module.css';
 import Dialog from '../../components/DialogCom/dialog';
+import Skuitem from '../../components/skuitem/skuitem.js';
 import request from '../../utiles/http';
 import Cookies from 'js-cookie';
 class classify extends Component {
@@ -8,7 +9,9 @@ class classify extends Component {
         super(props);
         this.state={
             arr:['取消','添加'],
-            isShow:false
+            isShow:false,
+            isSku:false,
+            skulist:[]
         }
     }
     componentWillMount(){
@@ -26,6 +29,7 @@ class classify extends Component {
         })
     }
     render() {
+        let {skulist} = this.state;
         return (
             <div className={style.classfiy}>
                {/*
@@ -50,11 +54,32 @@ class classify extends Component {
                     </div>
                    
                 </div>
+                    {/* <Skuitem></Skuitem> */}
+                    {                                   
+                        // 涨知识了原来还能这么操作呀
+                        skulist.map(item=>{
+                            return <Skuitem key={item} id={item} deleteSku={this.deleteSku.bind(this)}></Skuitem>
+                        })
+                    }
+                <button className={style.sku} onClick={this.handleSku}>add SKU</button>
                 <div className={style.classfiy_footer} onClick={this.addType.bind(this)}>
                         添加分类
                 </div>
             </div>
         );
+    }
+ 
+    handleSku=()=>{
+        let {skulist} = this.state;
+        this.setState({
+            skulist:[...skulist,new Date().getTime()]
+        })
+    }
+    deleteSku(id){
+        let {skulist} = this.state;
+        skulist.filter(item=>{
+            return id!==item;
+        })
     }
     addType(){
         this.setState({
