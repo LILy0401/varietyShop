@@ -6,6 +6,7 @@ import Select from '../../components/selects/index.js';
 import { open,close } from '../../components/Loading/loading';
 import { openPoP } from '../../components/Popup/popup.js';
 import Cookies from 'js-cookie';
+import Connent from  '../../utiles/router'
 
 
 class putaway extends Component {
@@ -272,4 +273,5 @@ class putaway extends Component {
     }
 }
 
-export default putaway;
+
+export default Connent(putaway);

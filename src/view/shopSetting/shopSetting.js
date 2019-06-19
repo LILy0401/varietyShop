@@ -8,6 +8,8 @@ import Checkboxs from '../../components/Checkboxs/checkbox'
 import 'antd-mobile/lib/date-picker/locale/en_US';
 // import { open,close } from '../../components/Loading/loading';
 import Cookies from 'js-cookie'
+import Connent from  '../../utiles/router'
+
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 let minDate = new Date(nowTimeStamp - 1e7);
@@ -60,20 +62,20 @@ class ShopSetting extends Component {
         }],
         dataImg: ['1'],
         wokeTime: '',
-        imgD:'',
+        imgD: '',
         logUrl: '',
-        store_id:'',
-        url:'',
-        main_image:'',
-        weekArr:[],
-        flag:false
+        store_id: '',
+        url: '',
+        main_image: '',
+        weekArr: [],
+        flag: false
     };
     getMsg = (data, num) => {
-            this.setState((state) => {
-                return {
-                    main_image:data.url[0].url
-                }
-            })
+        this.setState((state) => {
+            return {
+                main_image: data.url[0].url
+            }
+        })
     }
     getMsg1 = (data, num) => {
         this.setState((state) => {
@@ -81,7 +83,7 @@ class ShopSetting extends Component {
                 logUrl: data.url[0].url
             }
         })
-        localStorage.setItem('logUrl',data.url[0].url)
+        localStorage.setItem('logUrl', data.url[0].url)
     }
     onChange = (field, value) => {
         this.setState({
@@ -92,19 +94,19 @@ class ShopSetting extends Component {
         this.setState({
             shopName: e.target.value
         })
-        localStorage.setItem('shopName',e.target.value)
+        localStorage.setItem('shopName', e.target.value)
     }
     addPriceFnFn(e) {
         this.setState({
             addPriceFn: e.target.value
         })
-        localStorage.setItem('addPriceFn',e.target.value)
+        localStorage.setItem('addPriceFn', e.target.value)
     }
     psfFn(e) {
         this.setState({
             psfFn: e.target.value
         })
-        localStorage.setItem('psfFn',e.target.value)
+        localStorage.setItem('psfFn', e.target.value)
     }
     // 选择布局样式
     radioFn(e) {
@@ -124,42 +126,42 @@ class ShopSetting extends Component {
         })
     }
     checkboxFN = (i) => {
-        let {weekArr}  = this.state;
-        let index = weekArr.findIndex(item=>item===i)
+        let { weekArr } = this.state;
+        let index = weekArr.findIndex(item => item === i)
         console.log(index)
-        if(index==-1){
+        if (index == -1) {
             weekArr.push(i);
-        }else{
-            weekArr.splice(index,1);
+        } else {
+            weekArr.splice(index, 1);
         }
-        localStorage.setItem('week',weekArr)  
+        localStorage.setItem('week', weekArr)
     }
-    componentWillMount(){
-        this.setState((state)=>{
-            return{
-                psfFn:localStorage.getItem('psfFn')?localStorage.getItem('psfFn'):'',
-                addPriceFn:localStorage.getItem('addPriceFn')?localStorage.getItem('addPriceFn'):'',
-                shopName:localStorage.getItem('shopName')?localStorage.getItem('shopName'):'',
-                logUrl:localStorage.getItem('logUrl')?localStorage.getItem('logUrl'):''
+    componentWillMount() {
+        this.setState((state) => {
+            return {
+                psfFn: localStorage.getItem('psfFn') ? localStorage.getItem('psfFn') : '',
+                addPriceFn: localStorage.getItem('addPriceFn') ? localStorage.getItem('addPriceFn') : '',
+                shopName: localStorage.getItem('shopName') ? localStorage.getItem('shopName') : '',
+                logUrl: localStorage.getItem('logUrl') ? localStorage.getItem('logUrl') : ''
             }
-        },()=>{
+        }, () => {
             // console.log(this.state.psfFn,this.state.addPriceFn,this.state.shopName)
         })
-        this.setState((state)=>{
+        this.setState((state) => {
             let naws = localStorage.getItem('store_id');
             return {
-                store_id:naws
+                store_id: naws
             }
         })
-        this.setState(state=>{
+        this.setState(state => {
             return {
-                url:'/upload?store_id='+state.store_id
+                url: '/upload?store_id=' + state.store_id
             }
         })
     }
     saveFn() {
         Register({
-            banner:this.state.dataImg,
+            banner: this.state.dataImg,
             store_id: this.state.store_id,
             store_name: this.state.shopName,
             brand_name: this.state.shopName,
@@ -169,16 +171,16 @@ class ShopSetting extends Component {
             indexstyle_id: this.state.indexstyle,
             delivery_fee: this.state.psfFn,
             logo: this.state.logUrl
-        }).then(res => { 
-            if(res.code===1){
+        }).then(res => {
+            if (res.code === 1) {
                 console.log(res.result)
-            }else{
+            } else {
                 alert('参数有误！')
             }
-         })
+        })
     }
-    backFn(){
-        window.history.back(-1); 
+    backFn() {
+        window.history.back(-1);
     }
     render() {
         return (
@@ -205,8 +207,8 @@ class ShopSetting extends Component {
                 </div>
                 <div className={style.shop_bot}>
                     <ul>
-                        <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)}  value={this.state.shopName} placeholder='请输入店铺名称'></input></li>
-                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)}  value={this.state.addPriceFn} placeholder='请输入起送价格'></input></li>
+                        <li><span>店铺名称</span><input type='text' onChange={(e) => this.shopNameFn(e)} value={this.state.shopName} placeholder='请输入店铺名称'></input></li>
+                        <li><span>起送价格</span><input type='text' onChange={(e) => this.addPriceFnFn(e)} value={this.state.addPriceFn} placeholder='请输入起送价格'></input></li>
                         <li><span>配 送 费</span><input type='text' onChange={(e) => this.psfFn(e)} value={this.state.psfFn} placeholder='请输入配送费'></input></li>
                         <li className={style.shop_check}>
                             <p>营业周期</p>
@@ -266,5 +268,5 @@ class ShopSetting extends Component {
         )
     }
 }
-export default ShopSetting
+export default Connent(ShopSetting)
 

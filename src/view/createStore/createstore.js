@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'uuid/v4'
 import {CreateShop} from '../../services'
 import './create.css'
+import Connent from  '../../utiles/router'
 class createstore extends Component {
     state={
         sfz:'',
@@ -70,4 +71,4 @@ class createstore extends Component {
     }
 }
 
-export default createstore;
+export default Connent(createstore);

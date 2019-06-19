@@ -4,7 +4,7 @@ import Dialog from '../../components/DialogCom/dialog';
 import request from '../../utiles/http';
 import Cookies from 'js-cookie';
 import ClassifyDOm from '../../components/ClassifyCom/classifycom';
-
+import Connent from  '../../utiles/router'
 class classify extends Component {
     constructor(props){
         super(props);
@@ -134,4 +134,4 @@ class classify extends Component {
     }
 }
 
-export default classify;
+export default Connent(classify);

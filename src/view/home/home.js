@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import style from './home.module.css';
-
+import Connent from  '../../utiles/router'
 
 class home extends Component {
     constructor(props){
@@ -113,4 +113,4 @@ class home extends Component {
     }
 }   
 
-export default home;
+export default Connent(home);

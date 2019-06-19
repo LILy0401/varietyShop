@@ -4,7 +4,11 @@ import Acommodity from '../../components/Acommodity/acommodity';
 import {Checkbox} from 'antd-mobile';
 import Headers from '../../components/Header/headers';
 import Cookie from 'js-cookie';
+<<<<<<< HEAD
 import request from '../../utiles/http';
+=======
+import Connent from  '../../utiles/router'
+>>>>>>> cfp
 class productlist extends Component {
     state={
         data:[]
@@ -56,5 +60,4 @@ class productlist extends Component {
         );
     }
 }
-
-export default productlist;
+export default Connent(productlist);
