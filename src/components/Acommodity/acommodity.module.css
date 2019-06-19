@@ -20,7 +20,7 @@
     margin:0 .1rem;
 }
 .product_every_div>input{
-    flex: 1;
+    flex: 1.5;
 }
 .product_every_div>span:nth-child(3){
     flex: 7;

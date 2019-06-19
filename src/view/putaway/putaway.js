@@ -6,7 +6,7 @@ import Select from '../../components/selects/index.js';
 import { open,close } from '../../components/Loading/loading';
 import { openPoP } from '../../components/Popup/popup.js';
 import Cookies from 'js-cookie';
-
+import Sku from '../../components/Sku/sku';
 
 class putaway extends Component {
     constructor(props){
@@ -22,7 +22,8 @@ class putaway extends Component {
             gram:'克',
             code_bar:'',
             image:'',
-            list:['克','千克','吨']
+            list:['克','千克','吨'],
+            skuList:[]
         }
     }
     componentDidMount(){
@@ -42,25 +43,27 @@ class putaway extends Component {
             close()
         },1500)
     }
-    getMsgDetail=(data)=>{
-        this.setState({
-            image:data.url[0].url
-        })
-
-    }
-    getMsg=(data,num)=>{
-
+    getMsgDetail=(data,num)=>{
+        
         if(this.state.dataImg.length<num){
             this.setState((state)=>{
            
                 let arr = [...state.dataImg]
-                arr.length<3 && arr.push('1')
+                arr.length<=3 && arr.push('1')
                 return {
                     dataImg:arr
                 }
             })
         }
-    
+       
+        this.state.image += data.url[0].url+',';
+       
+        this.setState({
+            image:this.state.image
+        })
+
+    }
+    getMsg=(data)=>{
         this.setState({
             pro_image:data.url[0].url
         })
@@ -69,7 +72,6 @@ class putaway extends Component {
         this.setState({
             gram:gram
         })
-    
     }
     render() {
         return (
@@ -145,13 +147,8 @@ class putaway extends Component {
                     <div className={style.put_content}>
                         <p className={style.com_picture}>商品图片</p>
                         <div className="photo">
-                            
-                             {
-                                 this.state.dataImg.map((ele,index)=>{
-                                     return  <Uploadpicture num='3' key={index} title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
-                                 })
-                             }
-                          
+    
+                            <Uploadpicture  title='上传图片' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
                         </div>
                     
                         <p className={style.com_picture}>购物车图(必填)</p>
@@ -162,49 +159,26 @@ class putaway extends Component {
                         </div>
                         <p className={style.com_picture}>商品详情</p>
                         <div className={style.photo}>
-                            
-                            <Uploadpicture  title='上传图片' getMsg={this.getMsgDetail} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
-                             
+                            {
+                                 this.state.dataImg.map((ele,index)=>{
+                                    return <Uploadpicture  num='3' key={index} title='上传图片' getMsg={this.getMsgDetail} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='big'></Uploadpicture>
+                                })
+                            }
                         </div>
                         <div className={style.put_con}>
                        
-                        <div className={style.put_type}>
-                            <div className={style.put_p_t_power}>
-                                <span>重量</span>
-                                <p>
-                                    <input type='text' placeholder='请输入重量'></input>
-                                </p>
-                                <Select deliveryFn={this.getke.bind(this)} arr={['克','千克','吨']}></Select>
-    
-                            </div>
-                            <div className={style.put_p}>
-                                <span>商品售价</span>
-                                <p>
-                                    <input type='text' placeholder='请选择商品售价'></input>
-                                </p>
-                            
-                            </div>
-                            <div className={style.put_p}>
-                                <span>商品条码</span>
-                                <p>
-                                    <input type='text' onChange={(e)=>{
-                                        this.setState({
-                                            code_bar:e.target.value
-                                        })
-                                    }} placeholder='请输入商品条码（选填）'></input>
-                                </p>
-                            </div>
-                            <p className={style.com_picture}>购物车图(必填)</p>
-                            <div className={style.photo}>
-
-                                <Uploadpicture title='上传banner' getMsg={this.getMsg} url='/upload?store_id=7fd2189e7e33562e060f58e0b88035cf' type='small'></Uploadpicture>
-                            </div>
+                        <div>
+                            {
+                                this.state.skuList.map((ele,index)=>{
+                                    return <Sku key={ele} flag={this.state.skuList.length-1 === index}></Sku>
+                                })
+                            }
                         </div>
                     </div>
                     </div>
                     <div className={style.sku}>
                         <p>
-                            <span className='iconfont iconicon_add'> SKU</span>
+                            <span className='iconfont iconicon_add' onClick={this.addSku}> SKU</span>
                         </p>
                     </div>
                     <p className={style.footer_p} onClick={this.putaway}>
@@ -215,10 +189,12 @@ class putaway extends Component {
         );
         
     }
-    getke(arr){
-        //克
+    addSku=()=>{
+        
+        this.state.skuList.push(new Date().getTime());
+
         this.setState({
-            gram:arr
+            sku:this.state.sku
         })
     }
     goClassify=()=>{

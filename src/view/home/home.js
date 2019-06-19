@@ -9,6 +9,9 @@ class home extends Component {
             arr:['取消','确定']
         }
     }
+    componentDidMount(){
+       
+    }
     render() {
         return (
             <div className={style.home}>

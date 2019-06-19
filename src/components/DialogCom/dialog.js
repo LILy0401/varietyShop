@@ -10,7 +10,7 @@ class Dialog extends Component {
     }
     // 使用dialog请前往classify.js
     render() {
-        let { type ,isShow} = this.props;
+        let { btn=['取消','确定'] ,type ,isShow} = this.props;
         return (
             <Animate transitionName='dia'>
                 { 
@@ -22,8 +22,8 @@ class Dialog extends Component {
                             {this.props.children}
                             </div>
                             <p>
-                                <span onClick={this.cancle.bind(this)}>{this.props.btn[0]}</span>
-                                <span onClick={this.confirm.bind(this)}>{this.props.btn[1]}</span>
+                                <span onClick={this.cancle.bind(this)}>{btn[0]}</span>
+                                <span onClick={this.confirm.bind(this)}>{btn[1]}</span>
                             </p>
                         </div>
                     </div>

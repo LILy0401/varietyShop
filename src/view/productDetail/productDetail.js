@@ -37,6 +37,8 @@ class productDetail extends Component {
     }
     render() {
        let state =  this.props.history.location.query.ele;
+        let img= state.image.split(',');
+        
         return (
             <div className='cll_productDetail'>
                 <Headers title="商品详情"></Headers>
@@ -123,7 +125,12 @@ class productDetail extends Component {
                     <div className='cll_detail_img'>
                         <p>商品详情</p>
                         <div className='cll_detail_img_div_big'>
-                            <img src={state.image}></img>
+                            {
+                                img.map((ele,index)=>{
+                                    return <img key={index} src={ele}></img>
+                                })
+                            }
+                            
                         </div>
                     </div>
                 </div>
