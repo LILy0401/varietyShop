@@ -4,6 +4,7 @@ import Acommodity from '../../components/Acommodity/acommodity';
 import {Checkbox} from 'antd-mobile';
 import Headers from '../../components/Header/headers';
 import Cookie from 'js-cookie';
+import Connent from  '../../utiles/router'
 class productlist extends Component {
     componentDidMount(){
 
@@ -47,5 +48,4 @@ class productlist extends Component {
         );
     }
 }
-
-export default productlist;
+export default Connent(productlist);

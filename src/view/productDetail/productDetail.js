@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './productDetail.css';
 import Headers from '../../components/Header/headers';
 import PdetailList from '../../components/PdetailList/pdetaillist';
+import Connent from  '../../utiles/router'
 class productDetail extends Component {
     render() {
         return (
@@ -13,4 +14,4 @@ class productDetail extends Component {
     }
 }
 
-export default productDetail;
+export default Connent(productDetail);
