@@ -17,16 +17,12 @@ function setRouters(routerconfig){
                     return <item.component history={history} children={item.children}></item.component>
                 }}></Route>
             }
-<<<<<<< HEAD
       
         return <Route path={item.path} render={({history})=>{
             return <item.component history={history}></item.component>
         }} key={item.name}></Route>
 
         
-=======
-        return <Route path={item.path} component={item.component} key={item.name}></Route>
->>>>>>> cfp
     })
 }
 let ROUTER = (({history,app})=>{

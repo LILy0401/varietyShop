@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import './productDetail.css';
 import Headers from '../../components/Header/headers';
 import PdetailList from '../../components/PdetailList/pdetaillist';
-<<<<<<< HEAD
 import DialogCom from '../../components/DialogCom/dialog';
 import request from '../../utiles/http';
 import Cookies from 'js-cookie';
-=======
 import Connent from  '../../utiles/router'
->>>>>>> cfp
 class productDetail extends Component {
     state={
         isShow:false,
