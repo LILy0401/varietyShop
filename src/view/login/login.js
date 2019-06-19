@@ -47,9 +47,7 @@ class login extends Component {
                     user_name:this.state.user_name,
                     user_pwd:this.state.user_pwd
                 }
-
             }).then(res=>{
-               
                 if(res.code === 1){
                      Cookies.set('token',res.token)
                     this.props.history.push('/home');

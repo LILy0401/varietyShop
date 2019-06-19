@@ -2,16 +2,14 @@ import React from 'react';
 import {Router,Switch,Route,Redirect} from 'dva/router';
 import routerconfig from './routerconfig'
 import Cookies from 'js-cookie';
-
-
+// import Connent from '../utiles/router'
+// console.log(Connent())
 function setRouters(routerconfig){
-
     return routerconfig.map(item=>{
-
+           
             if(item.redirect){
                     return  window.location.pathname === item.path && <Redirect key={item.redirect} exact from={item.path} to={item.redirect}></Redirect>
             }
-       
             if(item.children){
                 return <Route path = {item.path} 
                 key = {item.name}
@@ -34,5 +32,6 @@ let ROUTER = (({history,app})=>{
                 </Switch>
             </Router>
 })
+
 export {setRouters};
 export default ROUTER;

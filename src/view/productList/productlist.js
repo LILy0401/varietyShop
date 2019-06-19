@@ -6,6 +6,7 @@ import Headers from '../../components/Header/headers';
 import Cookie from 'js-cookie';
 import request from '../../utiles/http';
 import DialogCom from '../../components/DialogCom/dialog';
+import Connent from  '../../utiles/router'
 class productlist extends Component {
     state={
         data:[],
@@ -95,5 +96,4 @@ class productlist extends Component {
         );
     }
 }
-
-export default productlist;
+export default Connent(productlist);
